@@ -1,0 +1,2 @@
+set path=D:\Program Files\Adobe\Adobe Flash Builder 4\sdks\4.0.0\bin
+start mxmlc.exe F:\code-tooth\code-tooth\uiMaker\Commands.as -output F:\code-tooth\code-tooth\uiMaker\data\command\commands.swf -source-path F:\code-tooth\code-tooth\uiMaker\src -external-library-path F:\airglobal.swc F:\code-tooth\code-tooth\codeToothPacker\bin\codeToothPacker.swc

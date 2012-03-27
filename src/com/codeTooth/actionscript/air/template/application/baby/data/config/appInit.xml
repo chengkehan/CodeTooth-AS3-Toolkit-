@@ -1,0 +1,14 @@
+<app>
+  <di>./data/di/di.xml</di>
+  <command>./data/command/commands.swf</command>
+  <window x="256" y="209" width="929" height="651"/>
+  <menu>
+    <item label="文件">
+      <item label="新建"/>
+      <item label="打开..."/>
+      <item isSeparator="true"/>
+      <item label="保存"/>
+      <item label="另存为..."/>
+    </item>
+  </menu>
+</app>

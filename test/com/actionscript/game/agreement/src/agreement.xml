@@ -1,0 +1,30 @@
+<agreements>
+	<agreement head="0xFF" id="1" clazz="AgreementExecute" func="execute" isStatic="true" isSingle="false" definition="RoleData" description="协议的描述文字">
+		<struct id="RoleDataStruct"/>
+	</agreement>
+	<struct id="RoleDataStruct">
+		<value name="name" type="string"/>
+		<value name="age" type="uint"/>
+		<value name="speed" type="int"/>
+		<value name="num1" type="float"/>
+		<value name="num2" type="double"/>
+		<value name="value" type="object" definition="RoleDataObject">
+			<value name="attack" type="int"/>
+			<value name="defence" type="int"/>
+		</value>
+		<value name="friends" type="array">
+			<value type="object" definition="FriendData">
+				<struct id="FriendDataStruct"/>
+			</value>
+		</value>
+		<value name="friends2" type="vector" definition="FriendData">
+			<value type="object" definition="FriendData">
+				<struct id="FriendDataStruct"/>
+			</value>
+		</value>
+	</struct>
+	<struct id="FriendDataStruct">
+		<value name="name" type="string"/>
+		<value name="age" type="uint"/>
+	</struct>
+</agreements>

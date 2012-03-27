@@ -1,0 +1,3 @@
+<data>
+	<insert source="data/di/commands.xml" relativePath="relativePath"/>
+</data>

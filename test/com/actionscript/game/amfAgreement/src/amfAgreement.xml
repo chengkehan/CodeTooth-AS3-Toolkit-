@@ -1,0 +1,3 @@
+<amfAgreements>
+	<amfAgreement id="1" module="TestModule" command="execute" isStatic="true" isSingle="false" description="备注"/>
+</amfAgreements>

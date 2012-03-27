@@ -1,0 +1,4 @@
+<data>
+	<!-- ********************************** App ************************************** -->
+	<item id="saveAppInitDataCommand" type="com.codeTooth.uiMaker.command.app.SaveAppInitDataCommand"/>
+</data>

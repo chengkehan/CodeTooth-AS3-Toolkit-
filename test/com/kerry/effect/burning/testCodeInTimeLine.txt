@@ -1,0 +1,43 @@
+import flash.display.Bitmap;
+import com.kerry.effect.Burning;
+import flash.display.Sprite;
+import flash.events.Event;
+import flash.events.MouseEvent;
+import flash.utils.setTimeout;
+
+var image:Bitmap = new Bitmap(new Image());
+addChild(image);
+image.x = 10;
+image.y = 100;
+
+var sp:Sprite = new Sprite();
+sp.addChild(image);
+addChild(sp);
+sp.x = 100;
+sp.y = 100;
+var effect:Burning = new Burning(sp, image.width + 20, image.height + 70, true, 4, -1, 8, 2, 2, 2, 2, .02, 6, 4, 1);
+
+addEventListener(Event.ENTER_FRAME, enterFrameHandler);
+function enterFrameHandler(event:Event):void
+{
+	effect.refresh();
+}
+
+stage.addEventListener(MouseEvent.CLICK, stageClickHandler);
+function stageClickHandler(event:MouseEvent):void
+{
+	//effect.setFlameStretch(-40);
+	
+	if(sp.contains(image))
+	{
+		sp.removeChild(image);
+		var image2:Bitmap = new Bitmap(new Image2());
+		image2.x = 10;
+		image2.y = 100;
+		sp.addChild(image2);
+	}
+	
+	//removeEventListener(Event.ENTER_FRAME, enterFrameHandler);
+//	effect.destroy();
+//	removeChild(sp);
+}
