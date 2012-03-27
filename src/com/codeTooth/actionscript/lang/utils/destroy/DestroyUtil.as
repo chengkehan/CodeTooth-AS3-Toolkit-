@@ -5,6 +5,7 @@ package com.codeTooth.actionscript.lang.utils.destroy
 	import flash.display.DisplayObjectContainer;
 	import flash.display.Loader;
 	import flash.display.MovieClip;
+	import flash.net.URLLoader;
 	import flash.utils.ByteArray;
 
 	/**
@@ -22,7 +23,7 @@ package com.codeTooth.actionscript.lang.utils.destroy
 		 * 如果对象实现了 IDestroy 接口，调用接口方法。
 		 * 如果对象中有 destroyMethodName 方法，调用该方法。
 		 * 如果对象是影片剪辑，停止播放。
-		 * 如果对象是位图，调用位图的 dispose 方法。
+		 * 如果对象是位图，调用位图的 destroy 方法。
 		 * 如果对象是 loader，尝试关闭流，调用 unloadAndStop 方法。
 		 * 
 		 * @param object 销毁的对象。
@@ -34,6 +35,17 @@ package com.codeTooth.actionscript.lang.utils.destroy
 				if(object is IDestroy)
 				{
 					object.destroy();
+				}
+				else if(object is URLLoader)
+				{
+					try
+					{
+						object.close();
+					} 
+					catch(error:Error) 
+					{
+						// Do nothing
+					}
 				}
 				else if (object is Loader)
 				{
@@ -70,6 +82,10 @@ package com.codeTooth.actionscript.lang.utils.destroy
 				else if (destroyMethodName in object)
 				{
 					object[destroyMethodName]();
+				}
+				else
+				{
+					// Do nothing
 				}
 			}
 		}
