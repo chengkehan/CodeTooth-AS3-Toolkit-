@@ -13,6 +13,11 @@ package com.codeTooth.actionscript.lang.utils
 		public static const SPACE:String = " ";
 		
 		/**
+		 * 空字符串
+		 */
+		public static const EMPTY_STRING:String = "";
+		
+		/**
 		 * 换行符
 		 */
 		public static const NEW_LINE:String = "\r\n";
