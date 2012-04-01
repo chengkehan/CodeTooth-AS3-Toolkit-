@@ -11,12 +11,9 @@ package com.codeTooth.actionscript.patterns.subject
 	{
 		public var _subjects:Dictionary = null;
 		
-		private var _tempNotifyData:NotifyData = null;
-		
 		public function Subjects()
 		{
 			_subjects = new Dictionary();
-			_tempNotifyData = new NotifyData();
 		}
 		
 		public function addSubjectsCall(...subjectIDs):void
@@ -64,8 +61,9 @@ package com.codeTooth.actionscript.patterns.subject
 			}
 			if(data == null)
 			{
-				_tempNotifyData.setSubjectID(subjectID);
-				subject.notify(_tempNotifyData);
+				var notifyData:NotifyData = new NotifyData();
+				notifyData.setSubjectID(subjectID);
+				subject.notify(notifyData);
 			}
 			else
 			{
@@ -98,8 +96,6 @@ package com.codeTooth.actionscript.patterns.subject
 		{
 			DestroyUtil.breakMap(_subjects);
 			_subjects = null;
-			
-			_tempNotifyData = null;
 		}
 	}
 }
