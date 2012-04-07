@@ -8,3 +8,5 @@ bin-release/
 .settings/
 .project
 .flexLibProperties
+
+.swc
