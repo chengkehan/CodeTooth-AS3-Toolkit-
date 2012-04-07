@@ -2,6 +2,7 @@ package com.codeTooth.actionscript.lang.utils
 {
 	import com.codeTooth.actionscript.core.codeTooth_internal;
 	import com.codeTooth.actionscript.lang.utils.collection.Collection;
+	
 	import flash.events.Event;
 	import flash.events.FileListEvent;
 	import flash.events.IOErrorEvent;
@@ -9,6 +10,7 @@ package com.codeTooth.actionscript.lang.utils
 	import flash.filesystem.File;
 	import flash.filesystem.FileMode;
 	import flash.filesystem.FileStream;
+	import flash.net.FileFilter;
 	import flash.utils.Dictionary;
 	
 	/**
@@ -21,6 +23,26 @@ package com.codeTooth.actionscript.lang.utils
 		private static var _eventTypes:Vector.<String> = Vector.<String>([Event.SELECT, IOErrorEvent.IO_ERROR, SecurityErrorEvent.SECURITY_ERROR, FileListEvent.SELECT_MULTIPLE, Event.COMPLETE, FileListEvent.DIRECTORY_LISTING, Event.CANCEL]);
 		
 		private static var _fileItems:Dictionary = new Dictionary();
+		
+		public static function getFileFilterPNG():FileFilter
+		{
+			return new FileFilter("PNG", "*.png");
+		}
+		
+		public static function getFileFileterJPG():FileFilter
+		{
+			return new FileFilter("JPG", "*.jpg");
+		}
+		
+		public static function getFileFilterXML():FileFilter
+		{
+			return new FileFilter("XML", "*.xml");
+		}
+		
+		public static function getFileFileterALL():FileFilter
+		{
+			return new FileFilter("ANY TYPE", "*.*");
+		}
 		
 		//---------------------------------------------------------------------------------------------------------------------------------------------------------
 		// 保存文件
