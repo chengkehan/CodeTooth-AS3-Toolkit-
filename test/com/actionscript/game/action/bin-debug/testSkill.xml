@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TextureAtlas imagePath="testSkill.png">
+    <!-- Created with TexturePacker -->
+    <!-- http://texturepacker.com -->
+    <!--  -->
+    <SubTexture name="youlongciJGup0001" x="0" y="0" width="50" height="122" frameX="-212" frameY="-39" frameWidth="550" frameHeight="400"/>
+    <SubTexture name="youlongciJGup0002" x="0" y="0" width="50" height="122" frameX="-212" frameY="-39" frameWidth="550" frameHeight="400"/>
+    <SubTexture name="youlongciJGup0003" x="0" y="0" width="50" height="122" frameX="-212" frameY="-39" frameWidth="550" frameHeight="400"/>
+    <SubTexture name="youlongciJGup0004" x="50" y="0" width="50" height="160" frameX="-213" frameY="-39" frameWidth="550" frameHeight="400"/>
+    <SubTexture name="youlongciJGup0005" x="50" y="0" width="50" height="160" frameX="-213" frameY="-39" frameWidth="550" frameHeight="400"/>
+    <SubTexture name="youlongciJGup0006" x="50" y="0" width="50" height="160" frameX="-213" frameY="-39" frameWidth="550" frameHeight="400"/>
+    <SubTexture name="youlongciJGup0007" x="100" y="0" width="68" height="264" frameX="-200" frameY="-39" frameWidth="550" frameHeight="400"/>
+    <SubTexture name="youlongciJGup0008" x="100" y="0" width="68" height="264" frameX="-200" frameY="-39" frameWidth="550" frameHeight="400"/>
+    <SubTexture name="youlongciJGup0009" x="100" y="0" width="68" height="264" frameX="-200" frameY="-39" frameWidth="550" frameHeight="400"/>
+    <SubTexture name="youlongciJGup0010" x="168" y="0" width="110" height="282" frameX="-178" frameY="-28" frameWidth="550" frameHeight="400"/>
+    <SubTexture name="youlongciJGup0011" x="168" y="0" width="110" height="282" frameX="-178" frameY="-28" frameWidth="550" frameHeight="400"/>
+    <SubTexture name="youlongciJGup0012" x="168" y="0" width="110" height="282" frameX="-178" frameY="-28" frameWidth="550" frameHeight="400"/>
+    <SubTexture name="youlongciJGup0013" x="278" y="0" width="146" height="208" frameX="-166" frameY="-110" frameWidth="550" frameHeight="400"/>
+    <SubTexture name="youlongciJGup0014" x="278" y="0" width="146" height="208" frameX="-166" frameY="-110" frameWidth="550" frameHeight="400"/>
+    <SubTexture name="youlongciJGup0015" x="0" y="282" width="150" height="104" frameX="-160" frameY="-212" frameWidth="550" frameHeight="400"/>
+    <SubTexture name="youlongciJGup0016" x="0" y="282" width="150" height="104" frameX="-160" frameY="-212" frameWidth="550" frameHeight="400"/>
+    <SubTexture name="youlongciJGup0017" x="150" y="282" width="178" height="122" frameX="-143" frameY="-200" frameWidth="550" frameHeight="400"/>
+    <SubTexture name="youlongciJGup0018" x="150" y="282" width="178" height="122" frameX="-143" frameY="-200" frameWidth="550" frameHeight="400"/>
+    <SubTexture name="youlongciJGup0019" x="0" y="404" width="198" height="144" frameX="-139" frameY="-185" frameWidth="550" frameHeight="400"/>
+    <SubTexture name="youlongciJGup0020" x="0" y="404" width="198" height="144" frameX="-139" frameY="-185" frameWidth="550" frameHeight="400"/>
+    <SubTexture name="youlongciJGup0021" x="198" y="404" width="198" height="180" frameX="-153" frameY="-168" frameWidth="550" frameHeight="400"/>
+    <SubTexture name="youlongciJGup0022" x="198" y="404" width="198" height="180" frameX="-153" frameY="-168" frameWidth="550" frameHeight="400"/>
+    <SubTexture name="youlongciJGup0023" x="396" y="404" width="0" height="0"/>
+    <SubTexture name="youlongciJGup0024" x="396" y="404" width="0" height="0"/>
+    <SubTexture name="youlongciJGup0025" x="396" y="404" width="0" height="0"/>
+    <SubTexture name="youlongciJGup0026" x="396" y="404" width="0" height="0"/>
+    <SubTexture name="youlongciJGup0027" x="396" y="404" width="0" height="0"/>
+    <SubTexture name="youlongciJGup0028" x="396" y="404" width="0" height="0"/>
+    <SubTexture name="youlongciJGup0029" x="396" y="404" width="0" height="0"/>
+    <SubTexture name="youlongciJGup0030" x="396" y="404" width="0" height="0"/>
+    <SubTexture name="youlongciJGup0031" x="396" y="404" width="0" height="0"/>
+    <SubTexture name="youlongciJGup0032" x="396" y="404" width="0" height="0"/>
+    <SubTexture name="youlongciJGup0033" x="396" y="404" width="0" height="0"/>
+    <SubTexture name="youlongciJGup0034" x="396" y="404" width="0" height="0"/>
+    <SubTexture name="youlongciJGup0035" x="396" y="404" width="0" height="0"/>
+    <SubTexture name="youlongciJGup0036" x="396" y="404" width="0" height="0"/>
+    <SubTexture name="youlongciJGup0037" x="396" y="404" width="0" height="0"/>
+</TextureAtlas>
