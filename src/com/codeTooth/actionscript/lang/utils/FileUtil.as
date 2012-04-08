@@ -57,6 +57,9 @@ package com.codeTooth.actionscript.lang.utils
 		// 保存成功后调用
 		private static var _saveSuccess:Function = null;
 		
+		// 调用save方法时，内部使用的文件名
+		private static var _saveInternalFileName:String = "_$FileUtil_internal$_";
+		
 		/**
 		 * 保存
 		 * 
@@ -70,7 +73,7 @@ package com.codeTooth.actionscript.lang.utils
 		 */
 		public static function save(writeStream:Function = null, exceptionCatcher:Function = null, saveSuccess:Function = null, saveDialogTitle:String = "Save", cancelHandler:Function = null):File
 		{
-			if (containsFileStatic("_$FileUtil_internal$_"))
+			if (containsFileStatic(_saveInternalFileName))
 			{
 				return null;
 			}
@@ -79,7 +82,7 @@ package com.codeTooth.actionscript.lang.utils
 				_writeStream = writeStream;
 				_exceptionCatcher = exceptionCatcher;
 				_saveSuccess = saveSuccess;
-				var file:File = createFileStatic("_$FileUtil_internal$_", true, selectSaveInternalHandler, null, null, null, null, null, cancelHandler);
+				var file:File = createFileStatic(_saveInternalFileName, true, selectSaveInternalHandler, null, null, null, null, null, cancelHandler);
 				file.browseForSave(saveDialogTitle);
 				
 				return file;
@@ -91,7 +94,7 @@ package com.codeTooth.actionscript.lang.utils
 			var stream:FileStream = new FileStream();
 			try
 			{
-				stream.open(getFileStatic("_$FileUtil_internal$_"), FileMode.WRITE);
+				stream.open(getFileStatic(_saveInternalFileName), FileMode.WRITE);
 				if (_writeStream != null)
 				{
 					_writeStream(stream);
@@ -166,7 +169,10 @@ package com.codeTooth.actionscript.lang.utils
 				var fileItem:FileItem = _fileItems[id];
 				fileItem.destroy();
 				delete _fileItems[id];
-				breakSaveParams();
+				if(id == _saveInternalFileName)
+				{
+					breakSaveParams();
+				}
 				
 				return true;
 			}
