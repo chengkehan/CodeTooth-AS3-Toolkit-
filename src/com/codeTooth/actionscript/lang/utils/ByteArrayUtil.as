@@ -1,5 +1,6 @@
 package com.codeTooth.actionscript.lang.utils 
 {
+	import com.adobe.crypto.MD5;
 	import com.codeTooth.actionscript.lang.exceptions.NullPointerException;
 	import com.codeTooth.actionscript.lang.exceptions.UnknownTypeException;
 	
@@ -615,6 +616,67 @@ package com.codeTooth.actionscript.lang.utils
 			tailBuffer.writeBytes(buffer, headNumBytes, buffer.length - headNumBytes - 4);
 			
 			return tailBuffer;
+		}
+		
+		/**
+		 * 在传入的字节数组末尾添加md5验证内容
+		 * 
+		 * @param buffer
+		 */
+		public static function setVerification(bytes:ByteArray):void
+		{
+			if(bytes == null)
+			{
+				throw new NullPointerException("Null input buffer parameter.");
+			}
+			
+			var md5:String = MD5.hashBytes(bytes);
+			var bufferLength:uint = bytes.length;
+			bytes.writeUTF(md5);
+			bytes.writeUnsignedInt(bufferLength);
+		}
+		
+		/**
+		 * 与setVerification方法配套使用。
+		 * 检查传入的字节数组是否符合md5的验证。
+		 * 
+		 * @param bytes
+		 * @param restoreBytes 如果通过检测，是否将buffer还原成原始的数据
+		 * 
+		 * @return 
+		 */
+		public static function checkVerification(bytes:ByteArray, restoreBytes:Boolean = false):Boolean
+		{
+			if(bytes == null)
+			{
+				throw new NullPointerException("Null input buffer parameter.");
+			}
+			
+			// 至少要有6个字节，其中2个字节用于存储md5验证字符串的长度，4个字节用于存储原始字节数组的长度
+			if(bytes.length < 6)
+			{
+				return false;
+			}
+			else
+			{
+				bytes.position = bytes.length - 4;
+				var originalLength:uint = bytes.readUnsignedInt();
+				bytes.position = originalLength;
+				var prevMD5:String = bytes.readUTF();
+				var thisMD5:String = MD5.hashBytes(bytes, 0, originalLength);
+				if(prevMD5 == thisMD5)
+				{
+					if(restoreBytes)
+					{
+						bytes.length = originalLength;
+					}
+					return true;
+				}
+				else
+				{
+					return false;
+				}
+			}
 		}
 	}
 

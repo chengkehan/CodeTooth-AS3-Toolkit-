@@ -33,6 +33,7 @@
 package com.adobe.crypto {
 	
 	import com.adobe.utils.IntUtil;
+	
 	import flash.utils.ByteArray;	
 	/**
 	 * The MD5 Message-Digest Algorithm
@@ -61,20 +62,23 @@ package com.adobe.crypto {
 			return hashBinary(ba);
 		}
 		
-		public static function hashBytes(s:ByteArray) :String{	
-			return hashBinary(s);
+		public static function hashBytes(s:ByteArray, startIndex:uint = 0, length:uint = 0) :String{	
+			return hashBinary(s, startIndex, length);
 		}
 		
 		/**
 		 * Performs the MD5 hash algorithm on a ByteArray.
 		 *
 		 * @param s The string to hash
+		 * @param startIndex 
+		 * @param length 
+		 * 
 		 * @return A string containing the hash value of s
 		 * @langversion ActionScript 3.0
 		 * @playerversion Flash 8.5
 		 * @tiptext
 		 */	 
-		public static function hashBinary( s:ByteArray ):String {
+		public static function hashBinary( s:ByteArray, startIndex:uint = 0, length:uint = 0 ):String {
 			// initialize the md buffers
 			var a:int = 1732584193;
 			var b:int = -271733879;
@@ -90,7 +94,7 @@ package com.adobe.crypto {
 			// create the blocks from the string and
 			// save the length as a local var to reduce
 			// lookup in the loop below
-			var x:Array = createBlocks( s );
+			var x:Array = createBlocks( s, startIndex, length );
 			var len:int = x.length;
 			
 			// loop over all of the blocks
@@ -263,11 +267,11 @@ package com.adobe.crypto {
 		 * @return An array containing the blocks that s was
 		 *			split into.
 		 */
-		private static function createBlocks( s:ByteArray ):Array {
+		private static function createBlocks( s:ByteArray, startIndex:uint = 0, length:uint = 0 ):Array {
 			var blocks:Array = new Array();
-			var len:int = s.length * 8;
+			var len:int = (length == 0 ? s.length : length) * 8;
 			var mask:int = 0xFF; // ignore hi byte of characters > 0xFF
-			for( var i:int = 0; i < len; i += 8 ) {
+			for( var i:int = startIndex; i < len; i += 8 ) {
 				blocks[ int(i >> 5) ] |= ( s[ i / 8 ] & mask ) << ( i % 32 );
 			}
 			
