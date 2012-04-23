@@ -54,6 +54,7 @@ package com.codeTooth.actionscript.display
 		{
 			_width = value;
 			redrawBg();
+			redrawBar();
 			repositionLabel();
 		}
 		
@@ -66,6 +67,7 @@ package com.codeTooth.actionscript.display
 		{
 			_height = value;
 			redrawBg();
+			redrawBar();
 			repositionLabel();
 		}
 		
