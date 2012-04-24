@@ -630,10 +630,13 @@ package com.codeTooth.actionscript.lang.utils
 				throw new NullPointerException("Null input buffer parameter.");
 			}
 			
+			var position:uint = bytes.position;
 			var md5:String = MD5.hashBytes(bytes);
 			var bufferLength:uint = bytes.length;
+			bytes.position = bytes.length;
 			bytes.writeUTF(md5);
 			bytes.writeUnsignedInt(bufferLength);
+			bytes.position = position;
 		}
 		
 		/**
@@ -659,23 +662,37 @@ package com.codeTooth.actionscript.lang.utils
 			}
 			else
 			{
-				bytes.position = bytes.length - 4;
-				var originalLength:uint = bytes.readUnsignedInt();
-				bytes.position = originalLength;
-				var prevMD5:String = bytes.readUTF();
-				var thisMD5:String = MD5.hashBytes(bytes, 0, originalLength);
-				if(prevMD5 == thisMD5)
+				try
 				{
-					if(restoreBytes)
+					var position:uint = bytes.position;
+					bytes.position = bytes.length - 4;
+					var originalLength:uint = bytes.readUnsignedInt();
+					bytes.position = originalLength;
+					var prevMD5:String = bytes.readUTF();
+					var thisMD5:String = MD5.hashBytes(bytes, 0, originalLength);
+					if(prevMD5 == thisMD5)
 					{
-						bytes.length = originalLength;
+						if(restoreBytes)
+						{
+							bytes.length = originalLength;
+						}
+						bytes.position = position;
+						return true;
 					}
-					return true;
+					else
+					{
+						bytes.position = position;
+						return false;
+					}
 				}
-				else
+				catch(error:Error)
 				{
+					bytes.position = position;
 					return false;
 				}
+				
+				bytes.position = position;
+				return false;
 			}
 		}
 	}
