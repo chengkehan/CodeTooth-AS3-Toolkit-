@@ -1,6 +1,7 @@
 package com.codeTooth.actionscript.game.action
 {
 	import com.codeTooth.actionscript.lang.exceptions.NullPointerException;
+	import com.codeTooth.actionscript.lang.utils.destroy.DestroyUtil;
 	
 	import flash.display.BitmapData;
 	import flash.geom.Point;
@@ -34,6 +35,18 @@ package com.codeTooth.actionscript.game.action
 					clipData.bitmapData = clipBmpd;
 				}
 			}
+		}
+		
+		public static function destroyClips(clipsData:Vector.<ClipData>):void
+		{
+			for each(var clipData:ClipData in clipsData)
+			{
+				if(clipData.bitmapData != null)
+				{
+					clipData.bitmapData.dispose();
+				}
+			}
+			DestroyUtil.destroyVector(clipsData);
 		}
 		
 		public static function createClipsBySparrow(sparrow:XML):Vector.<ClipData>

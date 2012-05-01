@@ -27,6 +27,21 @@ package com.codeTooth.actionscript.game.action
 			}
 		}
 		
+		public function destroyClipsData(id:Number):Boolean
+		{
+			if(containsClipsData(id))
+			{
+				ActionUtil.destroyClips(getClipsData(id));
+				delete _clipsDataMap[id];
+				
+				return true;
+			}
+			else
+			{
+				return false;
+			}
+		}
+		
 		public function getClipsData(id:Number):Vector.<ClipData>
 		{
 			if(!containsClipsData(id))
@@ -56,16 +71,9 @@ package com.codeTooth.actionscript.game.action
 		
 		public function destroy():void
 		{
-			for each(var clipsData:Vector.<ClipData> in _clipsDataMap)
+			for(var id:Object in _clipsDataMap)
 			{
-				for each(var clipData:ClipData in clipsData)
-				{
-					if(clipData.bitmapData != null)
-					{
-						clipData.bitmapData.dispose();
-					}
-				}
-				DestroyUtil.destroyVector(clipsData);
+				destroyClipsData(Number(id));
 			}
 			DestroyUtil.breakMap(_clipsDataMap);
 			_clipsDataMap = null;

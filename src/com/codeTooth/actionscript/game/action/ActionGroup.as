@@ -1,6 +1,7 @@
 package com.codeTooth.actionscript.game.action
 {
 	import com.codeTooth.actionscript.lang.exceptions.NullPointerException;
+	import com.codeTooth.actionscript.lang.exceptions.UnsupportedException;
 	import com.codeTooth.actionscript.lang.utils.destroy.DestroyUtil;
 	import com.codeTooth.actionscript.lang.utils.destroy.IDestroy;
 	
@@ -34,7 +35,7 @@ package com.codeTooth.actionscript.game.action
 		
 		override public function set mouseChildren(enable:Boolean):void
 		{
-			// Do nothing
+			throw new UnsupportedException("Unsupport function.");
 		}
 		
 		override public function get mouseChildren():Boolean

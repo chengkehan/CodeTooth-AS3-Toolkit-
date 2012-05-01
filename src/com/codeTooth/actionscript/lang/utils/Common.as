@@ -75,5 +75,15 @@ package com.codeTooth.actionscript.lang.utils
 		 * double类型占用的字节数
 		 */
 		public static const DOUBLE_BYTE_SIZE:uint = 8;
+		
+		/**
+		 * 分号
+		 */
+		public static const SEMICOLON:String = ";";
+		
+		/**
+		 * 冒号
+		 */
+		public static const COLON:String = ":";
 	}
 }
