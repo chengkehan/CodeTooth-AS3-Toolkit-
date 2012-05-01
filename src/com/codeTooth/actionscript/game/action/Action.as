@@ -5,18 +5,22 @@ package com.codeTooth.actionscript.game.action
 	
 	import flash.display.Bitmap;
 	
+	/**
+	 * 帧动画
+	 */
 	public class Action extends Bitmap implements IDestroy
 	{
+		// 帧动画所使用的数据
 		private var _actionData:ActionData = null;
-		
-		private var _currClipIndex:int = 0;
-		
 		private var _clips:Vector.<ClipData> = null;
 		
+		// 当前播放到第几帧
+		private var _currClipIndex:int = 0;
+		
+		// 总帧数
 		private var _numClips:int = 0;
 		
-		private var _timeCount:int = 0;
-		
+		// 是否可刷新
 		private var _refreshable:Boolean = false;
 		
 		public function Action(actionData:ActionData)
@@ -27,32 +31,48 @@ package com.codeTooth.actionscript.game.action
 			}
 			_actionData = actionData;
 			_currClipIndex = 0;
-			_timeCount = 0;
 			_clips = _actionData.getClipsData();
 			_numClips = _clips == null || _clips.length == 0 ? 0 : _clips.length;
 			_refreshable = true;
 		}
 		
+		/**
+		 * 总帧数
+		 */
 		public function get numClips():int
 		{
 			return _numClips;
 		}
 		
+		/**
+		 * 当前播放到第几帧
+		 */
 		public function get currentClipIndex():int
 		{
 			return _currClipIndex;
 		}
 		
+		/**
+		 * 是否可刷新
+		 */
 		public function set refreshable(bool:Boolean):void
 		{
 			_refreshable = bool;
 		}
 		
+		/**
+		 * @privete
+		 */
 		public function get refreshable():Boolean
 		{
 			return _refreshable;
 		}
 		
+		/**
+		 * 添加前置空帧
+		 * 
+		 * @param amount
+		 */
 		public function addEmptyClipPrefix(amount:int = 1):void
 		{
 			if(_numClips != 0)
@@ -65,6 +85,11 @@ package com.codeTooth.actionscript.game.action
 			}
 		}
 		
+		/**
+		 * 删除前置空帧
+		 * 
+		 * @param amount
+		 */
 		public function removeEmptyClipPrefix(amount:int = 1):void
 		{
 			if(_numClips != 0)
@@ -77,16 +102,27 @@ package com.codeTooth.actionscript.game.action
 			}
 		}
 		
+		/**
+		 * 删除所有的前置空帧
+		 */
 		public function removeAllEmptyClipsPrefix():void
 		{
 			_actionData.removeAllEmptyClipsPrefix();
 		}
 		
+		/**
+		 * 前置空帧数量
+		 */
 		public function get numEmptyClipsPrefix():int
 		{
 			return _actionData.numEmptyClipsPrefix;
 		}
 		
+		/**
+		 * 添加后置空帧
+		 * 
+		 * @param amount
+		 */
 		public function addEmptyClipSuffix(amount:int = 1):void
 		{
 			if(_numClips != 0)
@@ -99,6 +135,11 @@ package com.codeTooth.actionscript.game.action
 			}
 		}
 		
+		/**
+		 * 删除后置空帧
+		 * 
+		 * @param amount
+		 */
 		public function removeEmptyClipSuffix(amount:int = 1):void
 		{
 			if(_numClips != 0)
@@ -111,16 +152,25 @@ package com.codeTooth.actionscript.game.action
 			}
 		}
 		
+		/**
+		 * 删除所有的后置空帧
+		 */
 		public function removeAllEmptyClipsSuffix():void
 		{
 			_actionData.removeAllEmptyClipsSuffix();
 		}
 		
+		/**
+		 * 后置空帧数量
+		 */
 		public function get numEmptyClipsSuffix():int
 		{
 			return _actionData.numEmptyClipsSuffix;
 		}
 		
+		/**
+		 * 删除所有的前置和后置空帧
+		 */
 		public function removeAllEmptyClips():void
 		{
 			_actionData.removeAllEmptyClipsPrefix();
@@ -132,11 +182,19 @@ package com.codeTooth.actionscript.game.action
 			return _actionData;
 		}
 		
+		/**
+		 * 指定播放到第几帧
+		 * 
+		 * @param index
+		 */
 		public function gotoClip(index:int):void
 		{
 			_currClipIndex = Math.min(Math.max(index, 0), _numClips - 1);
 		}
 		
+		/**
+		 * 刷新显示
+		 */
 		public function refreshClip():void
 		{
 			if(!_refreshable)
@@ -151,6 +209,9 @@ package com.codeTooth.actionscript.game.action
 			presentClip(_currClipIndex);
 		}
 		
+		/**
+		 * 跳转到下一帧
+		 */
 		public function nextClip():void
 		{
 			_currClipIndex = _currClipIndex + 1 >= _numClips ? 0 : _currClipIndex + 1;
@@ -166,6 +227,10 @@ package com.codeTooth.actionscript.game.action
 				super.y = _y - _actionData.origionY - clip.frameY;
 			}
 		}
+		
+		//------------------------------------------------------------------------------------------------------------------------------
+		// 重写 xy 方法
+		//------------------------------------------------------------------------------------------------------------------------------
 		
 		private var _x:Number = 0;
 		
@@ -191,6 +256,10 @@ package com.codeTooth.actionscript.game.action
 			_y = value;
 		}
 
+		//------------------------------------------------------------------------------------------------------------------------------
+		// 实现 IDestroy 接口
+		//------------------------------------------------------------------------------------------------------------------------------
+		
 		public function destroy():void
 		{
 			bitmapData = null;

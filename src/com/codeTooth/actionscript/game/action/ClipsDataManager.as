@@ -7,10 +7,23 @@ package com.codeTooth.actionscript.game.action
 	import flash.display.BitmapData;
 	import flash.utils.Dictionary;
 
+	/**
+	 * 剪辑帧数据管理器
+	 */
 	public class ClipsDataManager implements IDestroy
 	{
 		private var _clipsDataMap:Dictionary/*key id:Number, value:Vector.<ClipData>*/ = new Dictionary();
 		
+		/**
+		 * 根据传入的SparrowXML和位图，自动创建好所有的剪辑帧。
+		 * 如果已经存在相同的id，则不会进行任何操作。
+		 * 
+		 * @param id
+		 * @param sparrow
+		 * @param bmpd
+		 * 
+		 * @return 
+		 */
 		public function createClipsData(id:Number, sparrow:XML, bmpd:BitmapData):Boolean
 		{
 			if(containsClipsData(id))
@@ -27,6 +40,13 @@ package com.codeTooth.actionscript.game.action
 			}
 		}
 		
+		/**
+		 * 销毁指定id的对应的所有剪辑帧
+		 * 
+		 * @param id
+		 * 
+		 * @return 
+		 */
 		public function destroyClipsData(id:Number):Boolean
 		{
 			if(containsClipsData(id))
@@ -42,6 +62,13 @@ package com.codeTooth.actionscript.game.action
 			}
 		}
 		
+		/**
+		 * 获得指定id对应的所有剪辑帧
+		 * 
+		 * @param id
+		 * 
+		 * @return 
+		 */
 		public function getClipsData(id:Number):Vector.<ClipData>
 		{
 			if(!containsClipsData(id))
@@ -52,6 +79,14 @@ package com.codeTooth.actionscript.game.action
 			return _clipsDataMap[id];
 		}
 		
+		/**
+		 * 将指定id对应的所有剪辑帧克隆一份后返回。
+		 * 每一个剪辑帧中除了位图切片外的其他数据都将被进行克隆。
+		 * 
+		 * @param id
+		 * 
+		 * @return 
+		 */
 		public function cloneClipsData(id:Number):Vector.<ClipData>
 		{
 			var clipsData:Vector.<ClipData> = getClipsData(id);
@@ -64,11 +99,20 @@ package com.codeTooth.actionscript.game.action
 			return newClipsData;
 		}
 		
+		/**
+		 * 判断是否包含了指定id的剪辑帧集合
+		 * 
+		 * @param id
+		 * @return 
+		 */
 		public function containsClipsData(id:Number):Boolean
 		{
 			return _clipsDataMap[id] != null;
 		}
 		
+		/**
+		 * @inheritDoc
+		 */
 		public function destroy():void
 		{
 			for(var id:Object in _clipsDataMap)

@@ -9,6 +9,12 @@ package com.codeTooth.actionscript.game.action
 
 	public class ActionUtil
 	{
+		/**
+		 * 对大张的位图，根据传入的ClipData中的切片数据，进行切片。最后切成的小块位图，存入对应的ClipData对象中。
+		 * 
+		 * @param bmpd
+		 * @param clipsData
+		 */
 		public static function sliceClips(bmpd:BitmapData, clipsData:Vector.<ClipData>):void
 		{
 			if(bmpd == null)
@@ -37,11 +43,16 @@ package com.codeTooth.actionscript.game.action
 			}
 		}
 		
+		/**
+		 * 销毁传入存有ClipData对象的集合
+		 * 
+		 * @param clipsData
+		 */
 		public static function destroyClips(clipsData:Vector.<ClipData>):void
 		{
 			for each(var clipData:ClipData in clipsData)
 			{
-				if(clipData.bitmapData != null)
+				if(clipData != null && clipData.bitmapData != null)
 				{
 					clipData.bitmapData.dispose();
 				}
@@ -49,6 +60,13 @@ package com.codeTooth.actionscript.game.action
 			DestroyUtil.destroyVector(clipsData);
 		}
 		
+		/**
+		 * 通过SparrowXML中的数据，创建所有的ClipData对象
+		 * 
+		 * @param sparrow
+		 * 
+		 * @return 返回存有所有ClipData对象的集合
+		 */
 		public static function createClipsBySparrow(sparrow:XML):Vector.<ClipData>
 		{
 			if(sparrow == null)
@@ -73,6 +91,12 @@ package com.codeTooth.actionscript.game.action
 			return clips;
 		}
 		
+		/**
+		 * 验证是否是一个合法的SparrowXML
+		 * 
+		 * @param sparrow
+		 * @return 
+		 */
 		public static function sparrowLegal(sparrow:XML):Boolean
 		{
 			if(sparrow == null)

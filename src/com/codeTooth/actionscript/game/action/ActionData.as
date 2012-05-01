@@ -2,24 +2,33 @@ package com.codeTooth.actionscript.game.action
 {
 	import com.codeTooth.actionscript.lang.utils.destroy.IDestroy;
 	
+	/**
+	 * 动作数据
+	 */
 	public class ActionData implements IDestroy
 	{
+		// id号
 		private var _id:Number = 0;
 		
+		// 前置空帧
 		private var _numEmptyClipPrefix:int = 0;
+		// 剪辑帧
 		private var _clipsData:Vector.<ClipData> = null;
+		// 后置空帧
 		private var _numEmptyClipSuffix:int = 0;
 		
+		// 注册点坐标
 		private var _origionX:int = 0;
-		
 		private var _origionY:int = 0;
 		
-		public function ActionData(id:Number, clipsData:Vector.<ClipData>, origionX:int = 0, origionY:int = 0)
+		public function ActionData(id:Number, clipsData:Vector.<ClipData>, origionX:int = 0, origionY:int = 0, numEmptyClipPrefix:int = 0, numEmptyClipSuffix:int = 0)
 		{
 			_id = id;
 			_clipsData = clipsData;
 			_origionX = origionX;
 			_origionY = origionY;
+			_numEmptyClipPrefix = numEmptyClipPrefix;
+			_numEmptyClipSuffix = numEmptyClipSuffix;
 		}
 		
 		public function get id():Number
@@ -47,66 +56,193 @@ package com.codeTooth.actionscript.game.action
 			_origionY = value;
 		}
 		
-		public function addEmptyClipPrefix():void
+		/**
+		 * 添加前置空帧
+		 * 
+		 * @param amount
+		 */
+		public function addEmptyClipsPrefix(amount:int):void
 		{
-			var emptyClipData:ClipData = new ClipData(0, 0, 0, 0, 0, 0, 0, 0);
-			_clipsData.unshift(emptyClipData);
-			_numEmptyClipPrefix++;
-		}
-		
-		public function removeEmptyClipPrefix():void
-		{
-			if(_numEmptyClipPrefix > 0)
+			for (var i:int = 0; i < amount; i++) 
 			{
-				_clipsData.shift();
-				_numEmptyClipPrefix--;
+				addEmptyClipPrefix();
 			}
 		}
 		
-		public function removeAllEmptyClipsPrefix():void
+		/**
+		 * 添加一个前置空帧
+		 */
+		public function addEmptyClipPrefix():Boolean
 		{
-			if(_numEmptyClipPrefix > 0)
+			if(_clipsData == null)
 			{
-				_clipsData.splice(0, _numEmptyClipPrefix);
-				_numEmptyClipPrefix = 0;
+				return false;
+			}
+			else
+			{
+				var emptyClipData:ClipData = new ClipData(0, 0, 0, 0, 0, 0, 0, 0);
+				_clipsData.unshift(emptyClipData);
+				_numEmptyClipPrefix++;
+				
+				return true;
 			}
 		}
 		
+		/**
+		 * 删除一个前置空帧
+		 */
+		public function removeEmptyClipPrefix():Boolean
+		{
+			if(_clipsData == null)
+			{
+				return false;
+			}
+			else
+			{
+				if(_numEmptyClipPrefix > 0)
+				{
+					_clipsData.shift();
+					_numEmptyClipPrefix--;
+					
+					return true;
+				}
+				else
+				{
+					return false;
+				}
+			}
+		}
+		
+		/**
+		 * 删除全部的前置空帧
+		 */
+		public function removeAllEmptyClipsPrefix():Boolean
+		{
+			if(_clipsData == null)
+			{
+				return false;
+			}
+			else
+			{
+				if(_numEmptyClipPrefix > 0)
+				{
+					_clipsData.splice(0, _numEmptyClipPrefix);
+					_numEmptyClipPrefix = 0;
+					
+					return true;
+				}
+				else
+				{
+					return false;
+				}
+			}
+		}
+		
+		/**
+		 * 获得当前前置空帧的数量
+		 * 
+		 * @return 
+		 */
 		public function get numEmptyClipsPrefix():int
 		{
 			return _numEmptyClipPrefix;
 		}
 		
-		public function addEmptyClipSuffix():void
+		/**
+		 * 添加后置空帧
+		 * 
+		 * @param amount
+		 */
+		public function addEmptyClipsSuffix(amount:int):void
 		{
-			var emptyClipData:ClipData = new ClipData(0, 0, 0, 0, 0, 0, 0, 0);
-			_clipsData.push(emptyClipData);
-			_numEmptyClipSuffix++;
-		}
-		
-		public function removeEmptyClipSuffix():void
-		{
-			if(_numEmptyClipSuffix > 0)
+			for (var i:int = 0; i < amount; i++) 
 			{
-				_clipsData.pop();
-				_numEmptyClipSuffix--
+				addEmptyClipSuffix();
 			}
 		}
 		
-		public function removeAllEmptyClipsSuffix():void
+		/**
+		 * 添加一个后置空帧
+		 */
+		public function addEmptyClipSuffix():Boolean
 		{
-			if(_numEmptyClipSuffix > 0)
+			if(_clipsData == null)
 			{
-				_clipsData.splice(_clipsData.length - _numEmptyClipSuffix, _numEmptyClipSuffix);
-				_numEmptyClipSuffix = 0;
+				return false;
+			}
+			else
+			{
+				var emptyClipData:ClipData = new ClipData(0, 0, 0, 0, 0, 0, 0, 0);
+				_clipsData.push(emptyClipData);
+				_numEmptyClipSuffix++;
+				
+				return true;
 			}
 		}
 		
+		/**
+		 * 删除一个后置空帧
+		 */
+		public function removeEmptyClipSuffix():Boolean
+		{
+			if(_clipsData == null)
+			{
+				return false;
+			}
+			else
+			{
+				if(_numEmptyClipSuffix > 0)
+				{
+					_clipsData.pop();
+					_numEmptyClipSuffix--;
+						
+					return true;
+				}
+				else
+				{
+					return false;
+				}
+			}
+		}
+		
+		/**
+		 * 删除全部的后置空帧
+		 */
+		public function removeAllEmptyClipsSuffix():Boolean
+		{
+			if(_clipsData == null)
+			{
+				return false;
+			}
+			else
+			{
+				if(_numEmptyClipSuffix > 0)
+				{
+					_clipsData.splice(_clipsData.length - _numEmptyClipSuffix, _numEmptyClipSuffix);
+					_numEmptyClipSuffix = 0;
+					
+					return true;
+				}
+				else
+				{
+					return false;
+				}
+			}
+		}
+		
+		/**
+		 * 获得当前后置空帧的数量
+		 * 
+		 * @return 
+		 */
 		public function get numEmptyClipsSuffix():int
 		{
 			return _numEmptyClipSuffix;
 		}
 		
+		/**
+		 * 删除所有的前置和后置空帧
+		 */
 		public function removeAllEmptyClips():void
 		{
 			removeAllEmptyClipsPrefix();
@@ -122,7 +258,7 @@ package com.codeTooth.actionscript.game.action
 		{
 			if(_clipsData == null)
 			{
-				return new ActionData(_id, _clipsData);
+				return new ActionData(_id, _clipsData, _origionX, _origionY, _numEmptyClipPrefix, _numEmptyClipSuffix);
 			}
 			else
 			{
@@ -140,6 +276,5 @@ package com.codeTooth.actionscript.game.action
 		{
 			_clipsData = null;
 		}
-
 	}
 }

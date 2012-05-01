@@ -4,26 +4,38 @@ package com.codeTooth.actionscript.game.action
 	
 	import flash.display.BitmapData;
 
+	/**
+	 * 剪辑帧数据
+	 */
 	public class ClipData implements IDestroy
 	{
+		// 切片x
 		private var _x:int = 0;
 		
+		// 切片y
 		private var _y:int = 0;
 		
+		// 切片宽度
 		private var _width:int = 0;
 		
+		// 切片高度
 		private var _height:int = 0;
 		
+		// 原始帧x
 		private var _frameX:int = 0;
 		
+		// 原始帧y
 		private var _frameY:int = 0;
 		
+		// 原始帧宽度
 		private var _frameWidth:int = 0;
 		
+		// 原始帧高度
 		private var _frameHeight:int = 0;
 		
 		private var _label:String = null;
 		
+		// 切片位图
 		private var _bmpd:BitmapData = null;
 		
 		private var _name:String = null;
@@ -121,7 +133,7 @@ package com.codeTooth.actionscript.game.action
 			return new ClipData(
 				_x, _y, _width, _height, 
 				_frameX, _frameY, _frameWidth, _frameHeight, 
-				_label, _bmpd, name
+				_label, _bmpd, _name
 			);
 		}
 		
