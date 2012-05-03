@@ -4,12 +4,13 @@ package
 	import com.codeTooth.actionscript.game.action.ActionGroup;
 	import com.codeTooth.actionscript.game.action.ActionUtil;
 	import com.codeTooth.actionscript.game.action.ClipData;
+	import com.codeTooth.actionscript.game.action.IAction;
 	
 	import flash.display.BitmapData;
 	import flash.display.Sprite;
 	import flash.events.Event;
 	
-	[SWF(frameRate="30")]
+	[SWF(frameRate="30", width="1000", height="700")]
 	public class ActionGroupTest extends Sprite
 	{
 		[Embed(source="testSkill.xml", mimeType="application/octet-stream")]
@@ -18,7 +19,7 @@ package
 		[Embed(source="testSkill.png")]
 		private var TestSkillPNG:Class;
 		
-		private var _actionGroup:ActionGroup = null;
+		private var _actions:Vector.<IAction> = null;
 		
 		public function ActionGroupTest()
 		{
@@ -29,21 +30,26 @@ package
 			var clipsData:Vector.<ClipData> = ActionUtil.createClipsBySparrow(sparrow);
 			ActionUtil.sliceClips(png, clipsData);
 			
-			var actionsData:Vector.<ActionData> = new Vector.<ActionData>();
-			for (var i:int = 0; i < 200; i++) 
+			_actions = new Vector.<IAction>();
+			for (var i:int = 0; i < 400; i++) 
 			{
-				actionsData.push(new ActionData(0, clipsData));
+				var action:ActionGroup = new ActionGroup(Vector.<ActionData>([new ActionData(i, clipsData)]));
+				_actions.push(action);
+				addChild(action);
+				action.x = stage.stageWidth * Math.random() - 150;
+				action.y = stage.stageHeight * Math.random() - 150;
 			}
-			_actionGroup = new ActionGroup(actionsData);
-			addChild(_actionGroup);
 			
 			addEventListener(Event.ENTER_FRAME, enterFrameHandler);
 		}
 
 		private function enterFrameHandler(event:Event):void
 		{
-			_actionGroup.refreshClip();
-			_actionGroup.nextClip();
+			for each(var action:IAction in _actions)
+			{
+				action.refreshClip();
+				action.nextClip();
+			}
 		}
 	}
 }

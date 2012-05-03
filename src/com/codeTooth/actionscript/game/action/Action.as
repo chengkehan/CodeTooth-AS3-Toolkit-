@@ -8,7 +8,7 @@ package com.codeTooth.actionscript.game.action
 	/**
 	 * 帧动画
 	 */
-	public class Action extends Bitmap implements IDestroy
+	public class Action extends Bitmap implements IDestroy, IAction
 	{
 		// 帧动画所使用的数据
 		private var _actionData:ActionData = null;
@@ -23,6 +23,8 @@ package com.codeTooth.actionscript.game.action
 		// 是否可刷新
 		private var _refreshable:Boolean = false;
 		
+		private var _fps:uint = 0;
+		
 		public function Action(actionData:ActionData)
 		{
 			if(actionData == null)
@@ -34,6 +36,16 @@ package com.codeTooth.actionscript.game.action
 			_clips = _actionData.getClipsData();
 			_numClips = _clips == null || _clips.length == 0 ? 0 : _clips.length;
 			_refreshable = true;
+		}
+		
+		public function set fps(value:uint):void
+		{
+			_fps = value;
+		}
+		
+		public function get fps():uint
+		{
+			return _fps;
 		}
 		
 		/**

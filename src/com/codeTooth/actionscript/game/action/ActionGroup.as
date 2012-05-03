@@ -10,7 +10,7 @@ package com.codeTooth.actionscript.game.action
 	/**
 	 * 帧动画组，可以同时播放多个帧动画
 	 */
-	public class ActionGroup extends Sprite implements IDestroy
+	public class ActionGroup extends Sprite implements IDestroy, IAction
 	{
 		// 所有需要同时播放的帧动画
 		private var _actions:Vector.<Action> = null;
@@ -19,6 +19,8 @@ package com.codeTooth.actionscript.game.action
 		private var _refreshable:Boolean = false;
 		
 		private var _actionsData:Vector.<ActionData> = null;
+		
+		private var _fps:uint = 0;
 		
 		public function ActionGroup(actionsData:Vector.<ActionData>)
 		{
@@ -38,6 +40,16 @@ package com.codeTooth.actionscript.game.action
 			
 			mouseEnabled = false;
 			_refreshable = true;
+		}
+		
+		public function set fps(value:uint):void
+		{
+			_fps = value;
+		}
+		
+		public function get fps():uint
+		{
+			return _fps;
 		}
 		
 		public function getActionsData():Vector.<ActionData>
