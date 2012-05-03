@@ -6,6 +6,9 @@ package com.codeTooth.actionscript.game.action
 	
 	import flash.utils.Dictionary;
 
+	/**
+	 * 动画播放器
+	 */
 	public class ActionPlayer implements ISubLoop, IDestroy
 	{
 		private var _actions:Dictionary/*key IAction, value ActionItem*/ = null;
@@ -29,7 +32,14 @@ package com.codeTooth.actionscript.game.action
 			return _running;
 		}
 		
-		public function setAction(pAction:IAction):Boolean
+		/**
+		 * 添加一个需要播放的动画
+		 * 
+		 * @param pAction
+		 * 
+		 * @return 如果已经存在返回false
+		 */
+		public function addAction(pAction:IAction):Boolean
 		{
 			if(_actions[pAction] == null)
 			{
@@ -44,7 +54,49 @@ package com.codeTooth.actionscript.game.action
 			}
 		}
 		
-		public function clearAction(pAction:IAction):Boolean
+		/**
+		 * 设置动画的fps
+		 * 
+		 * @param fps
+		 * @param pAction 指定的设置的那个动画。如果传入默认的null，就表示设置当前的全部。
+		 * 
+		 * @return 
+		 */
+		public function setFPS(fps:uint, pAction:IAction = null):Boolean
+		{
+			var item:ActionItem = null;
+			if(pAction == null)
+			{
+				for each(item in _actions)
+				{
+					item.frameTime = 1000 / fps;
+				}
+				
+				return true;
+			}
+			else
+			{
+				if(_actions[pAction] == null)
+				{
+					return false;
+				}
+				else
+				{
+					item = _actions[pAction];
+					item.frameTime = 1000 / fps;
+					return true;
+				}
+			}
+		}
+		
+		/**
+		 * 删除一个不需要播放的动画
+		 * 
+		 * @param pAction
+		 * 
+		 * @return 如果不存在返回false
+		 */
+		public function removeAction(pAction:IAction):Boolean
 		{
 			if(_actions[pAction] == null)
 			{
@@ -63,6 +115,10 @@ package com.codeTooth.actionscript.game.action
 			return _actions[pAction] != null;
 		}
 
+		//------------------------------------------------------------------------------------------------------------------------------
+		// 实现 ISubLoop 接口
+		//------------------------------------------------------------------------------------------------------------------------------
+		
 		public function get canEnter():Boolean
 		{
 			return _running;
@@ -87,6 +143,10 @@ package com.codeTooth.actionscript.game.action
 			}
 		}
 
+		//------------------------------------------------------------------------------------------------------------------------------
+		// 实现 IDetroy 接口
+		//------------------------------------------------------------------------------------------------------------------------------
+		
 		public function destroy():void
 		{
 			_destroied = true;
