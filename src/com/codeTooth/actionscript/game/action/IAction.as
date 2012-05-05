@@ -1,6 +1,8 @@
 package com.codeTooth.actionscript.game.action
 {
-	public interface IAction
+	import com.codeTooth.actionscript.nativeInterface.IDisplayObject;
+
+	public interface IAction extends IDisplayObject
 	{
 		function set fps(value:uint):void;
 		
