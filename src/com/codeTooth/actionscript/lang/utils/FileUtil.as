@@ -39,6 +39,11 @@ package com.codeTooth.actionscript.lang.utils
 			return new FileFilter("XML", "*.xml");
 		}
 		
+		public static function getFileFilterSWF():FileFilter
+		{
+			return new FileFilter("SWF", "*.swf");
+		}
+		
 		public static function getFileFileterALL():FileFilter
 		{
 			return new FileFilter("ANY TYPE", "*.*");
