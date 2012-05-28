@@ -85,5 +85,7 @@ package com.codeTooth.actionscript.lang.utils
 		 * 冒号
 		 */
 		public static const COLON:String = ":";
+		
+		public static const SHARP:String = "#";
 	}
 }
