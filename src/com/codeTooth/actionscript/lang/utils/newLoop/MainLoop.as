@@ -6,6 +6,7 @@ package com.codeTooth.actionscript.lang.utils.newLoop
 	
 	import flash.display.Sprite;
 	import flash.events.Event;
+	import flash.utils.Dictionary;
 	import flash.utils.getTimer;
 
 	/**
@@ -38,6 +39,12 @@ package com.codeTooth.actionscript.lang.utils.newLoop
 		
 		private var _length:int = 0;
 		
+		// 删除子循环的队列
+		// 需要删除的子循环对象会临时的保存在这里
+		// 当单次主循环进行到最后的时候统一删除
+		private var _removeSubLoopsQueue:Dictionary = null;
+		private var _removeSubLoopsQueueLength:int = 0;
+		
 		/**
 		 * 构造函数
 		 * 
@@ -54,6 +61,9 @@ package com.codeTooth.actionscript.lang.utils.newLoop
 			addEventListener(Event.ENTER_FRAME, mainLoopHandler);
 			
 			_subLoops = new Vector.<ISubLoop>();
+			
+			_removeSubLoopsQueue = new Dictionary();
+			_removeSubLoopsQueueLength = 0;
 		}
 		
 		/**
@@ -95,11 +105,15 @@ package com.codeTooth.actionscript.lang.utils.newLoop
 		
 		public function removeSubLoop(subLoop:ISubLoop):void
 		{
-			var index:int = _subLoops.indexOf(subLoop);
-			if(index != -1)
+			if(subLoop == null)
 			{
-				_length--;
-				_subLoops.splice(index, 1);
+				throw new NullPointerException("Null subLoop");
+			}
+			
+			if(_removeSubLoopsQueue[subLoop] == null)
+			{
+				_removeSubLoopsQueue[subLoop] = subLoop;
+				_removeSubLoopsQueueLength++;
 			}
 		}
 		
@@ -113,6 +127,8 @@ package com.codeTooth.actionscript.lang.utils.newLoop
 		
 		public function removeAllSubLoops():void
 		{
+			DestroyUtil.breakMap(_removeSubLoopsQueue);
+			_removeSubLoopsQueueLength = 0;
 			DestroyUtil.breakVector(_subLoops);
 			_length = 0;
 		}
@@ -141,6 +157,11 @@ package com.codeTooth.actionscript.lang.utils.newLoop
 			for (var i:int = 0; i < _length; i++) 
 			{
 				var subLoop:ISubLoop = _subLoops[i];
+				if(_removeSubLoopsQueue[subLoop] != null)
+				{
+					continue;
+				}
+				
 				if(subLoop.canEnter)
 				{
 					subLoop.loop(_time, currTime);
@@ -153,11 +174,27 @@ package com.codeTooth.actionscript.lang.utils.newLoop
 				}
 			}
 			
+			// 从删除队列中删除所有的子循环
+			if(_removeSubLoopsQueueLength > 0)
+			{
+				for each(var removeSubLoop:ISubLoop in _removeSubLoopsQueue)
+				{
+					var removeIndex:int = _subLoops.indexOf(removeSubLoop);
+					if(removeIndex != -1)
+					{
+						_subLoops.splice(removeIndex, 1);
+						_length--;
+					}
+				}
+				DestroyUtil.breakMap(_removeSubLoopsQueue);
+				_removeSubLoopsQueueLength = 0;
+			}
+			
 			_time = currTime;
 		}
 		
 		//------------------------------------------------------------------------------------------------------------------------------
-		// 实现 IDispose 接口
+		// 实现 IDestroy 接口
 		//------------------------------------------------------------------------------------------------------------------------------
 		
 		public function destroy():void
@@ -168,6 +205,9 @@ package com.codeTooth.actionscript.lang.utils.newLoop
 			
 			DestroyUtil.breakVector(_subLoops);
 			_subLoops = null;
+			
+			DestroyUtil.breakMap(_removeSubLoopsQueue);
+			_removeSubLoopsQueue = null;
 		}
 	}
 }
