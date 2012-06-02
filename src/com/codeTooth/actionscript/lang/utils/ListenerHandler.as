@@ -12,7 +12,7 @@ package com.codeTooth.actionscript.lang.utils
 	{
 		private var _target:IEventDispatcher = null;
 		
-		private var _items:Dictionary = null;
+		private var _items:Vector.<Item> = null;
 		
 		public function ListenerHandler(target:IEventDispatcher)
 		{
@@ -22,7 +22,7 @@ package com.codeTooth.actionscript.lang.utils
 			}
 			
 			_target = target;
-			_items = new Dictionary();
+			_items = new Vector.<Item>();
 		}
 		
 		public function getTarget():IEventDispatcher
@@ -36,26 +36,24 @@ package com.codeTooth.actionscript.lang.utils
 			item.type = type;
 			item.listener = listener;
 			item.useCapture = useCapture;
-			_items[type] = item;
+			_items.push(item);
 			_target.addEventListener(type, listener, useCapture, priority, useWeakReference);
 		}
 		
-		public function removeListener(type:String):Boolean
+		public function removeListener(type:String, listener:Function, useCapture:Boolean = false):Boolean
 		{
-			if(containsListener(type))
+			for each(var item:Item in _items)
 			{
-				var item:Item = _items[type];
-				delete _items[type];
-				
-				_target.removeEventListener(item.type, item.listener, item.useCapture);
-				item.destroy();
-				
-				return true;
+				if(item.type == type && item.listener == listener && item.useCapture == useCapture)
+				{
+					_target.removeEventListener(item.type, item.listener, item.useCapture);
+					delete _items[type];
+					item.destroy();
+					return true;
+				}
 			}
-			else
-			{
-				return false;
-			}
+			
+			return false;
 		}
 		
 		public function removeAllListeners():void
@@ -64,13 +62,9 @@ package com.codeTooth.actionscript.lang.utils
 			{
 				_target.removeEventListener(item.type, item.listener, item.useCapture);
 			}
-			DestroyUtil.destroyMap(_items);
+			DestroyUtil.destroyVector(_items);
 		}
 		
-		public function containsListener(type:String):Boolean
-		{
-			return _items[type] != null;
-		}
 		
 		public function destroy():void
 		{
