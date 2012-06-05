@@ -4,6 +4,7 @@ package com.codeTooth.actionscript.lang.utils.newObjectPool
 	import com.codeTooth.actionscript.lang.utils.destroy.IDestroy;
 	
 	import flash.utils.Dictionary;
+	import com.codeTooth.actionscript.lang.utils.newObjectPool.Pool;
 	import com.codeTooth.actionscript.lang.exceptions.NoSuchObjectException;
 	import com.codeTooth.actionscript.lang.exceptions.IllegalOperationException;
 
@@ -15,6 +16,8 @@ package com.codeTooth.actionscript.lang.utils.newObjectPool
 		// 各种对象池
 		private var _pools:Dictionary/*key type, value Pool*/ = null;
 		private var _poolsAlias:Dictionary/*key alias, value Pool*/ = null; 
+		private var _types:Dictionary/*key type, value type*/ = null;
+		private var _alias:Dictionary/*key alias, value alias*/ = null;
 		
 		public function ObjectPool():void
 		{
@@ -43,6 +46,15 @@ package com.codeTooth.actionscript.lang.utils.newObjectPool
 			var pool:Pool = new Pool(type, alias, invokeAfterPut, invokeBeforeGet, invokeDisposeObject);
 			_pools[type] = pool;
 			_poolsAlias[alias] = pool;
+			
+			if(_types != null)
+			{
+				_types[type] = type;
+			}
+			if(_alias != null)
+			{
+				_alias[alias] = alias;
+			}
 		}
 		
 		/**
@@ -181,17 +193,63 @@ package com.codeTooth.actionscript.lang.utils.newObjectPool
 		}
 		
 		/**
+		 * 获得所有对象池的类型。该方法返回的集合只能用于遍历查看，请勿修改。
+		 * 
+		 * @return 
+		 */
+		public function getPoolsType():Dictionary
+		{
+			if(_types == null)
+			{
+				_types = new Dictionary();
+				for each(var pool:Pool in _pools)
+				{
+					_types[pool.getType()] = pool.getType();
+				}
+			}
+			
+			return _types;
+		}
+		
+		/**
+		 * 获得所有对象池的别名。该方法返回的集合只能用于遍历查看，请勿修改。
+		 * 
+		 * @return 
+		 */
+		public function getPoolsAlias():Dictionary
+		{
+			if(_alias == null)
+			{
+				_alias = new Dictionary();
+				for each(var pool:Pool in _pools)
+				{
+					_alias[pool.getAlias()] = pool.getAlias();
+				}
+			}
+			
+			return _alias;
+		}
+		
+		/**
 		 * 销毁指定类型的对象池
 		 * 
 		 * @param type
 		 */
-		public function destroyPool(type:Class):void
+		public function disposePool(type:Class):void
 		{
 			if(containsPool(type))
 			{
 				var pool:Pool = getPool(type);
 				delete _pools[pool.getType()];
 				delete _poolsAlias[pool.getAlias()];
+				if(_types != null)
+				{
+					delete _types[pool.getType()];
+				}
+				if(_alias != null)
+				{
+					delete _alias[pool.getAlias()];
+				}
 				pool.destroy();
 			}
 		}
@@ -201,13 +259,21 @@ package com.codeTooth.actionscript.lang.utils.newObjectPool
 		 * 
 		 * @param type
 		 */
-		public function destroyPoolByAlias(alias:Object):void
+		public function disposePoolByAlias(alias:Object):void
 		{
 			if(containsPoolByAlias(alias))
 			{
 				var pool:Pool = getPoolByAlias(alias);
 				delete _pools[pool.getType()];
 				delete _poolsAlias[pool.getAlias()];
+				if(_types != null)
+				{
+					delete _types[pool.getType()];
+				}
+				if(_alias != null)
+				{
+					delete _alias[pool.getAlias()];
+				}
 				pool.destroy();
 			}
 		}
@@ -221,8 +287,21 @@ package com.codeTooth.actionscript.lang.utils.newObjectPool
 			{
 				DestroyUtil.destroyMap(_pools);
 				_pools = null;
+			}
+			if(_poolsAlias != null)
+			{
 				DestroyUtil.breakMap(_poolsAlias);
 				_poolsAlias = null;
+			}
+			if(_types != null)
+			{
+				DestroyUtil.breakMap(_types);
+				_types = null;
+			}
+			if(_alias != null)
+			{
+				DestroyUtil.breakMap(_alias);
+				_alias = null;
 			}
 		}
 		
