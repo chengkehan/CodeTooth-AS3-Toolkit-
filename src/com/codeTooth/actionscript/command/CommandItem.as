@@ -5,11 +5,11 @@ package com.codeTooth.actionscript.command
 
 	public class CommandItem implements IDestroy
 	{
-		private var _commandID:CommandID = null;
+		private var _commandID:Object = null;
 		
 		private var _command:ICommand = null;
 		
-		public function CommandItem(commandID:CommandID, command:ICommand)
+		public function CommandItem(commandID:Object, command:ICommand)
 		{
 			if(commandID == null)
 			{
@@ -24,7 +24,7 @@ package com.codeTooth.actionscript.command
 			_command = command;
 		}
 		
-		public function getCommandID():CommandID
+		public function getCommandID():Object
 		{
 			return _commandID;
 		}

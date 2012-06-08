@@ -42,7 +42,7 @@ package com.codeTooth.actionscript.command
 			}
 		}
 		
-		public function removeCommand(commandID:CommandID):CommandItem
+		public function removeCommand(commandID:Object):CommandItem
 		{
 			var command:CommandItem = _commands[commandID];
 			delete _commands[commandID];
@@ -52,21 +52,21 @@ package com.codeTooth.actionscript.command
 		
 		public function removeCommandsCall(...commandIDs):void
 		{
-			for each(var commandID:CommandID in commandIDs)
+			for each(var commandID:Object in commandIDs)
 			{
 				removeCommand(commandID);
 			}
 		}
 		
-		public function removeCommandsApply(commandIDs:Vector.<CommandID>):void
+		public function removeCommandsApply(commandIDs:Vector.<Object>):void
 		{
-			for each(var commandID:CommandID in commandIDs)
+			for each(var commandID:Object in commandIDs)
 			{
 				removeCommand(commandID);
 			}
 		}
 		
-		public function executeCommand(commandID:CommandID, data:Object = null):*
+		public function executeCommand(commandID:Object, data:Object = null):*
 		{
 			var commandItem:CommandItem = _commands[commandID];
 			if(commandItem == null)
@@ -77,12 +77,12 @@ package com.codeTooth.actionscript.command
 			return commandItem.getCommand().execute(data);
 		}
 		
-		public function getCommand(commandID:CommandID):CommandItem
+		public function getCommand(commandID:Object):CommandItem
 		{
 			return _commands[commandID];
 		}
 		
-		public function containsCommand(commandID:CommandID):Boolean
+		public function containsCommand(commandID:Object):Boolean
 		{
 			return _commands[commandID] != null;
 		}

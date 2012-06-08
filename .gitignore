@@ -9,4 +9,4 @@ bin-release/
 .project
 .flexLibProperties
 
-.swc
+*.swc
