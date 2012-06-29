@@ -25,17 +25,26 @@ package com.codeTooth.actionscript.game.action
 		
 		private var _fps:uint = 0;
 		
-		public function Action(actionData:ActionData)
+		public function Action(actionData:ActionData = null)
 		{
-			if(actionData == null)
-			{
-				throw new NullPointerException("Null input actionData parameter.");
-			}
-			_actionData = actionData;
-			_currClipIndex = 0;
-			_clips = _actionData.getClipsData();
-			_numClips = _clips == null || _clips.length == 0 ? 0 : _clips.length;
 			_refreshable = true;
+			setActionData(actionData);
+		}
+		
+		public function setActionData(actionData:ActionData):void
+		{
+			if(_actionData != actionData)
+			{
+				_actionData = actionData;
+				_currClipIndex = 0;
+				_clips = _actionData == null ? null : _actionData.getClipsData();
+				_numClips = _clips == null || _clips.length == 0 ? 0 : _clips.length;
+			}
+		}
+		
+		public function getActionData():ActionData
+		{
+			return _actionData;
 		}
 		
 		public function set fps(value:uint):void
@@ -93,7 +102,7 @@ package com.codeTooth.actionscript.game.action
 				{
 					_actionData.addEmptyClipPrefix();
 				}
-				_numClips = _clips.length
+				_numClips = _clips.length;
 			}
 		}
 		
@@ -119,7 +128,10 @@ package com.codeTooth.actionscript.game.action
 		 */
 		public function removeAllEmptyClipsPrefix():void
 		{
-			_actionData.removeAllEmptyClipsPrefix();
+			if(_numClips != 0)
+			{
+				_actionData.removeAllEmptyClipsPrefix();
+			}
 		}
 		
 		/**
@@ -127,7 +139,7 @@ package com.codeTooth.actionscript.game.action
 		 */
 		public function get numEmptyClipsPrefix():int
 		{
-			return _actionData.numEmptyClipsPrefix;
+			return _numClips == 0 ? 0 : _actionData.numEmptyClipsPrefix;
 		}
 		
 		/**
@@ -169,7 +181,10 @@ package com.codeTooth.actionscript.game.action
 		 */
 		public function removeAllEmptyClipsSuffix():void
 		{
-			_actionData.removeAllEmptyClipsSuffix();
+			if(_numClips != 0)
+			{
+				_actionData.removeAllEmptyClipsSuffix();
+			}
 		}
 		
 		/**
@@ -177,7 +192,7 @@ package com.codeTooth.actionscript.game.action
 		 */
 		public function get numEmptyClipsSuffix():int
 		{
-			return _actionData.numEmptyClipsSuffix;
+			return _numClips == 0 ? 0 : _actionData.numEmptyClipsSuffix;
 		}
 		
 		/**
@@ -185,13 +200,11 @@ package com.codeTooth.actionscript.game.action
 		 */
 		public function removeAllEmptyClips():void
 		{
-			_actionData.removeAllEmptyClipsPrefix();
-			_actionData.removeAllEmptyClipsSuffix();
-		}
-		
-		public function getActionData():ActionData
-		{
-			return _actionData;
+			if(_numClips != 0)
+			{
+				_actionData.removeAllEmptyClipsPrefix();
+				_actionData.removeAllEmptyClipsSuffix();
+			}
 		}
 		
 		/**
@@ -201,7 +214,14 @@ package com.codeTooth.actionscript.game.action
 		 */
 		public function gotoClip(index:int):void
 		{
-			_currClipIndex = Math.min(Math.max(index, 0), _numClips - 1);
+			if(_numClips == 0)
+			{
+				_currClipIndex = 0;
+			}
+			else
+			{
+				_currClipIndex = Math.min(Math.max(index, 0), _numClips - 1);
+			}
 		}
 		
 		/**
@@ -215,10 +235,11 @@ package com.codeTooth.actionscript.game.action
 			}
 			if(_numClips == 0)
 			{
+				bitmapData = null;
 				return;
 			}
 
-			presentClip(_currClipIndex);
+			performanceClip(_currClipIndex);
 		}
 		
 		/**
@@ -229,7 +250,7 @@ package com.codeTooth.actionscript.game.action
 			_currClipIndex = _currClipIndex + 1 >= _numClips ? 0 : _currClipIndex + 1;
 		}
 		
-		private function presentClip(clipIndex:int):void
+		private function performanceClip(clipIndex:int):void
 		{
 			var clip:ClipData = _clips[clipIndex];
 			bitmapData = clip.bitmapData;
@@ -279,6 +300,5 @@ package com.codeTooth.actionscript.game.action
 			_clips = null;
 			_numClips = 0;
 		}
-
 	}
 }

@@ -137,6 +137,15 @@ package com.codeTooth.actionscript.game.action
 			);
 		}
 		
+		public function cloneNoBitmapData():ClipData
+		{
+			return new ClipData(
+				_x, _y, _width, _height, 
+				_frameX, _frameY, _frameWidth, _frameHeight, 
+				_label, null, _name
+			);
+		}
+		
 		public function destroy():void
 		{
 			_bmpd = null;

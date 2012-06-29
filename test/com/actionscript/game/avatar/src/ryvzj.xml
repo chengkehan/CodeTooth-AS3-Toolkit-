@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TextureAtlas imagePath="ryvzj.png">
+    <!-- Created with TexturePacker -->
+    <!-- http://texturepacker.com -->
+    <!--  -->
+    <SubTexture name="role_1_5_0_0_0" x="424" y="1764" width="40" height="122" frameX="-182" frameY="-95" frameWidth="370" frameHeight="370"/>
+    <SubTexture name="role_1_5_0_0_1" x="172" y="1082" width="40" height="110" frameX="-182" frameY="-93" frameWidth="370" frameHeight="370"/>
+    <SubTexture name="role_1_5_0_0_2" x="170" y="1886" width="40" height="124" frameX="-182" frameY="-92" frameWidth="370" frameHeight="370"/>
+    <SubTexture name="role_1_5_0_0_3" x="340" y="1764" width="42" height="120" frameX="-180" frameY="-96" frameWidth="370" frameHeight="370"/>
+    <SubTexture name="role_1_5_0_0_4" x="92" y="1192" width="40" height="110" frameX="-182" frameY="-94" frameWidth="370" frameHeight="370"/>
+    <SubTexture name="role_1_5_0_0_5" x="0" y="1886" width="40" height="124" frameX="-182" frameY="-92" frameWidth="370" frameHeight="370"/>
+    
+    <SubTexture name="role_1_5_0_1_0" x="188" y="1416" width="54" height="112" frameX="-165" frameY="-96" frameWidth="370" frameHeight="370"/>
+    <SubTexture name="role_1_5_0_1_1" x="374" y="1082" width="38" height="110" frameX="-180" frameY="-94" frameWidth="370" frameHeight="370"/>
+    <SubTexture name="role_1_5_0_1_2" x="382" y="1764" width="42" height="122" frameX="-176" frameY="-91" frameWidth="370" frameHeight="370"/>
+    <SubTexture name="role_1_5_0_1_3" x="456" y="1530" width="46" height="116" frameX="-171" frameY="-96" frameWidth="370" frameHeight="370"/>
+    <SubTexture name="role_1_5_0_1_4" x="426" y="864" width="36" height="108" frameX="-182" frameY="-93" frameWidth="370" frameHeight="370"/>
+    <SubTexture name="role_1_5_0_1_5" x="424" y="1646" width="50" height="118" frameX="-170" frameY="-92" frameWidth="370" frameHeight="370"/>
+    
+    <SubTexture name="role_1_5_0_2_0" x="300" y="758" width="68" height="106" frameX="-161" frameY="-98" frameWidth="370" frameHeight="370"/>
+    <SubTexture name="role_1_5_0_2_1" x="246" y="864" width="46" height="108" frameX="-181" frameY="-96" frameWidth="370" frameHeight="370"/>
+    <SubTexture name="role_1_5_0_2_2" x="396" y="1192" width="60" height="112" frameX="-166" frameY="-92" frameWidth="370" frameHeight="370"/>
+    <SubTexture name="role_1_5_0_2_3" x="446" y="654" width="62" height="104" frameX="-161" frameY="-96" frameWidth="370" frameHeight="370"/>
+    <SubTexture name="role_1_5_0_2_4" x="362" y="654" width="38" height="104" frameX="-184" frameY="-95" frameWidth="370" frameHeight="370"/>
+    <SubTexture name="role_1_5_0_2_5" x="368" y="758" width="60" height="106" frameX="-167" frameY="-93" frameWidth="370" frameHeight="370"/>
+    
+    <SubTexture name="role_1_5_0_3_0" x="212" y="1530" width="50" height="114" frameX="-175" frameY="-101" frameWidth="370" frameHeight="370"/>
+    <SubTexture name="role_1_5_0_3_1" x="462" y="864" width="46" height="108" frameX="-179" frameY="-99" frameWidth="370" frameHeight="370"/>
+    <SubTexture name="role_1_5_0_3_2" x="110" y="972" width="52" height="108" frameX="-173" frameY="-96" frameWidth="370" frameHeight="370"/>
+    <SubTexture name="role_1_5_0_3_3" x="278" y="972" width="52" height="110" frameX="-169" frameY="-100" frameWidth="370" frameHeight="370"/>
+    <SubTexture name="role_1_5_0_3_4" x="400" y="654" width="46" height="104" frameX="-179" frameY="-99" frameWidth="370" frameHeight="370"/>
+    <SubTexture name="role_1_5_0_3_5" x="60" y="1304" width="48" height="112" frameX="-177" frameY="-95" frameWidth="370" frameHeight="370"/>
+    
+    <SubTexture name="role_1_5_0_4_0" x="48" y="1646" width="40" height="116" frameX="-175" frameY="-102" frameWidth="370" frameHeight="370"/>
+    <SubTexture name="role_1_5_0_4_1" x="226" y="758" width="40" height="106" frameX="-175" frameY="-101" frameWidth="370" frameHeight="370"/>
+    <SubTexture name="role_1_5_0_4_2" x="108" y="1304" width="40" height="112" frameX="-175" frameY="-98" frameWidth="370" frameHeight="370"/>
+    <SubTexture name="role_1_5_0_4_3" x="40" y="1530" width="42" height="114" frameX="-175" frameY="-103" frameWidth="370" frameHeight="370"/>
+    <SubTexture name="role_1_5_0_4_4" x="428" y="758" width="40" height="106" frameX="-175" frameY="-100" frameWidth="370" frameHeight="370"/>
+    <SubTexture name="role_1_5_0_4_5" x="266" y="1304" width="40" height="112" frameX="-175" frameY="-99" frameWidth="370" frameHeight="370"/>
+    
+    <SubTexture name="role_1_5_1_0_0" x="132" y="1192" width="46" height="110" frameX="-178" frameY="-97" frameWidth="370" frameHeight="370"/>
+    <SubTexture name="role_1_5_1_0_1" x="450" y="1082" width="46" height="110" frameX="-178" frameY="-97" frameWidth="370" frameHeight="370"/>
+    <SubTexture name="role_1_5_1_0_2" x="224" y="1192" width="46" height="110" frameX="-178" frameY="-97" frameWidth="370" frameHeight="370"/>
+    <SubTexture name="role_1_5_1_0_3" x="46" y="1192" width="46" height="110" frameX="-178" frameY="-97" frameWidth="370" frameHeight="370"/>
+    <SubTexture name="role_1_5_1_0_4" x="224" y="1192" width="46" height="110" frameX="-178" frameY="-97" frameWidth="370" frameHeight="370"/>
+    <SubTexture name="role_1_5_1_0_5" x="450" y="1082" width="46" height="110" frameX="-178" frameY="-97" frameWidth="370" frameHeight="370"/>
+    
+    <SubTexture name="role_1_5_1_1_0" x="210" y="972" width="34" height="110" frameX="-183" frameY="-96" frameWidth="370" frameHeight="370"/>
+    <SubTexture name="role_1_5_1_1_1" x="244" y="972" width="34" height="110" frameX="-183" frameY="-96" frameWidth="370" frameHeight="370"/>
+    <SubTexture name="role_1_5_1_1_2" x="366" y="972" width="34" height="110" frameX="-183" frameY="-96" frameWidth="370" frameHeight="370"/>
+    <SubTexture name="role_1_5_1_1_3" x="330" y="972" width="36" height="110" frameX="-181" frameY="-96" frameWidth="370" frameHeight="370"/>
+    <SubTexture name="role_1_5_1_1_4" x="366" y="972" width="34" height="110" frameX="-183" frameY="-96" frameWidth="370" frameHeight="370"/>
+    <SubTexture name="role_1_5_1_1_5" x="244" y="972" width="34" height="110" frameX="-183" frameY="-96" frameWidth="370" frameHeight="370"/>
+    
+    <SubTexture name="role_1_5_1_2_0" x="54" y="1416" width="26" height="112" frameX="-185" frameY="-94" frameWidth="370" frameHeight="370"/>
+    <SubTexture name="role_1_5_1_2_1" x="194" y="1304" width="26" height="112" frameX="-185" frameY="-94" frameWidth="370" frameHeight="370"/>
+    <SubTexture name="role_1_5_1_2_2" x="242" y="1416" width="26" height="112" frameX="-185" frameY="-94" frameWidth="370" frameHeight="370"/>
+    <SubTexture name="role_1_5_1_2_3" x="352" y="1416" width="26" height="112" frameX="-186" frameY="-94" frameWidth="370" frameHeight="370"/>
+    <SubTexture name="role_1_5_1_2_4" x="242" y="1416" width="26" height="112" frameX="-185" frameY="-94" frameWidth="370" frameHeight="370"/>
+    <SubTexture name="role_1_5_1_2_5" x="194" y="1304" width="26" height="112" frameX="-185" frameY="-94" frameWidth="370" frameHeight="370"/>
+    
+    <SubTexture name="role_1_5_1_3_0" x="132" y="1082" width="40" height="110" frameX="-179" frameY="-94" frameWidth="370" frameHeight="370"/>
+    <SubTexture name="role_1_5_1_3_1" x="334" y="1082" width="40" height="110" frameX="-179" frameY="-94" frameWidth="370" frameHeight="370"/>
+    <SubTexture name="role_1_5_1_3_2" x="294" y="1082" width="40" height="110" frameX="-179" frameY="-94" frameWidth="370" frameHeight="370"/>
+    <SubTexture name="role_1_5_1_3_3" x="254" y="1082" width="40" height="110" frameX="-179" frameY="-94" frameWidth="370" frameHeight="370"/>
+    <SubTexture name="role_1_5_1_3_4" x="294" y="1082" width="40" height="110" frameX="-179" frameY="-94" frameWidth="370" frameHeight="370"/>
+    <SubTexture name="role_1_5_1_3_5" x="334" y="1082" width="40" height="110" frameX="-179" frameY="-94" frameWidth="370" frameHeight="370"/>
+    
+    <SubTexture name="role_1_5_1_4_0" x="0" y="1192" width="46" height="110" frameX="-172" frameY="-96" frameWidth="370" frameHeight="370"/>
+    <SubTexture name="role_1_5_1_4_1" x="178" y="1192" width="46" height="110" frameX="-172" frameY="-96" frameWidth="370" frameHeight="370"/>
+    <SubTexture name="role_1_5_1_4_2" x="220" y="1304" width="46" height="112" frameX="-172" frameY="-94" frameWidth="370" frameHeight="370"/>
+    <SubTexture name="role_1_5_1_4_3" x="306" y="1304" width="46" height="112" frameX="-172" frameY="-94" frameWidth="370" frameHeight="370"/>
+    <SubTexture name="role_1_5_1_4_4" x="220" y="1304" width="46" height="112" frameX="-172" frameY="-94" frameWidth="370" frameHeight="370"/>
+    <SubTexture name="role_1_5_1_4_5" x="178" y="1192" width="46" height="110" frameX="-172" frameY="-96" frameWidth="370" frameHeight="370"/>
+    
+    <SubTexture name="role_1_5_2_0_0" x="158" y="1530" width="54" height="114" frameX="-184" frameY="-120" frameWidth="370" frameHeight="370"/>
+    <SubTexture name="role_1_5_2_0_1" x="212" y="1082" width="42" height="110" frameX="-184" frameY="-124" frameWidth="370" frameHeight="370"/>
+    <SubTexture name="role_1_5_2_0_2" x="46" y="1082" width="46" height="110" frameX="-185" frameY="-124" frameWidth="370" frameHeight="370"/>
+    <SubTexture name="role_1_5_2_0_3" x="46" y="1082" width="46" height="110" frameX="-185" frameY="-124" frameWidth="370" frameHeight="370"/>
+    <SubTexture name="role_1_5_2_0_4" x="0" y="972" width="42" height="108" frameX="-185" frameY="-126" frameWidth="370" frameHeight="370"/>
+    <SubTexture name="role_1_5_2_0_5" x="170" y="1764" width="46" height="118" frameX="-185" frameY="-116" frameWidth="370" frameHeight="370"/>
+    <SubTexture name="role_1_5_2_0_6" x="0" y="654" width="58" height="100" frameX="-164" frameY="-134" frameWidth="370" frameHeight="370"/>
+    <SubTexture name="role_1_5_2_0_7" x="0" y="554" width="62" height="98" frameX="-162" frameY="-136" frameWidth="370" frameHeight="370"/>
+    <SubTexture name="role_1_5_2_0_8" x="0" y="554" width="62" height="98" frameX="-162" frameY="-136" frameWidth="370" frameHeight="370"/>
+    <SubTexture name="role_1_5_2_0_9" x="378" y="1416" width="66" height="114" frameX="-156" frameY="-120" frameWidth="370" frameHeight="370"/>
+    
+    <SubTexture name="role_1_5_2_1_0" x="268" y="1416" width="48" height="112" frameX="-171" frameY="-118" frameWidth="370" frameHeight="370"/>
+    <SubTexture name="role_1_5_2_1_1" x="316" y="1416" width="36" height="112" frameX="-171" frameY="-118" frameWidth="370" frameHeight="370"/>
+    <SubTexture name="role_1_5_2_1_2" x="440" y="1304" width="40" height="112" frameX="-163" frameY="-118" frameWidth="370" frameHeight="370"/>
+    <SubTexture name="role_1_5_2_1_3" x="440" y="1304" width="40" height="112" frameX="-163" frameY="-118" frameWidth="370" frameHeight="370"/>
+    <SubTexture name="role_1_5_2_1_4" x="400" y="972" width="46" height="110" frameX="-157" frameY="-120" frameWidth="370" frameHeight="370"/>
+    <SubTexture name="role_1_5_2_1_5" x="310" y="1530" width="46" height="114" frameX="-170" frameY="-116" frameWidth="370" frameHeight="370"/>
+    <SubTexture name="role_1_5_2_1_6" x="172" y="554" width="72" height="98" frameX="-170" frameY="-132" frameWidth="370" frameHeight="370"/>
+    <SubTexture name="role_1_5_2_1_7" x="442" y="458" width="70" height="96" frameX="-170" frameY="-134" frameWidth="370" frameHeight="370"/>
+    <SubTexture name="role_1_5_2_1_8" x="442" y="458" width="70" height="96" frameX="-170" frameY="-134" frameWidth="370" frameHeight="370"/>
+    <SubTexture name="role_1_5_2_1_9" x="328" y="1192" width="68" height="112" frameX="-168" frameY="-119" frameWidth="370" frameHeight="370"/>
+    
+    <SubTexture name="role_1_5_2_2_0" x="290" y="554" width="64" height="100" frameX="-148" frameY="-113" frameWidth="370" frameHeight="370"/>
+    <SubTexture name="role_1_5_2_2_1" x="166" y="758" width="60" height="106" frameX="-149" frameY="-107" frameWidth="370" frameHeight="370"/>
+    <SubTexture name="role_1_5_2_2_2" x="104" y="864" width="66" height="106" frameX="-143" frameY="-107" frameWidth="370" frameHeight="370"/>
+    <SubTexture name="role_1_5_2_2_3" x="104" y="864" width="66" height="106" frameX="-143" frameY="-107" frameWidth="370" frameHeight="370"/>
+    <SubTexture name="role_1_5_2_2_4" x="52" y="758" width="72" height="104" frameX="-137" frameY="-109" frameWidth="370" frameHeight="370"/>
+    <SubTexture name="role_1_5_2_2_5" x="62" y="554" width="60" height="98" frameX="-149" frameY="-115" frameWidth="370" frameHeight="370"/>
+    <SubTexture name="role_1_5_2_2_6" x="310" y="204" width="112" height="78" frameX="-149" frameY="-135" frameWidth="370" frameHeight="370"/>
+    <SubTexture name="role_1_5_2_2_7" x="0" y="282" width="110" height="78" frameX="-149" frameY="-135" frameWidth="370" frameHeight="370"/>
+    <SubTexture name="role_1_5_2_2_8" x="0" y="282" width="110" height="78" frameX="-149" frameY="-135" frameWidth="370" frameHeight="370"/>
+    <SubTexture name="role_1_5_2_2_9" x="388" y="368" width="86" height="90" frameX="-148" frameY="-123" frameWidth="370" frameHeight="370"/>
+    
+    <SubTexture name="role_1_5_2_3_0" x="186" y="458" width="56" height="92" frameX="-155" frameY="-109" frameWidth="370" frameHeight="370"/>
+    <SubTexture name="role_1_5_2_3_1" x="306" y="654" width="56" height="102" frameX="-155" frameY="-99" frameWidth="370" frameHeight="370"/>
+    <SubTexture name="role_1_5_2_3_2" x="328" y="864" width="58" height="108" frameX="-153" frameY="-93" frameWidth="370" frameHeight="370"/>
+    <SubTexture name="role_1_5_2_3_3" x="328" y="864" width="58" height="108" frameX="-153" frameY="-93" frameWidth="370" frameHeight="370"/>
+    <SubTexture name="role_1_5_2_3_4" x="270" y="1192" width="58" height="112" frameX="-153" frameY="-89" frameWidth="370" frameHeight="370"/>
+    <SubTexture name="role_1_5_2_3_5" x="446" y="554" width="58" height="100" frameX="-155" frameY="-100" frameWidth="370" frameHeight="370"/>
+    <SubTexture name="role_1_5_2_3_6" x="288" y="128" width="90" height="72" frameX="-155" frameY="-146" frameWidth="370" frameHeight="370"/>
+    <SubTexture name="role_1_5_2_3_7" x="100" y="204" width="88" height="76" frameX="-155" frameY="-147" frameWidth="370" frameHeight="370"/>
+    <SubTexture name="role_1_5_2_3_8" x="100" y="204" width="88" height="76" frameX="-155" frameY="-147" frameWidth="370" frameHeight="370"/>
+    <SubTexture name="role_1_5_2_3_9" x="146" y="128" width="78" height="70" frameX="-152" frameY="-129" frameWidth="370" frameHeight="370"/>
+    
+    <SubTexture name="role_1_5_2_4_0" x="354" y="554" width="52" height="100" frameX="-163" frameY="-106" frameWidth="370" frameHeight="370"/>
+    <SubTexture name="role_1_5_2_4_1" x="92" y="1082" width="40" height="110" frameX="-174" frameY="-96" frameWidth="370" frameHeight="370"/>
+    <SubTexture name="role_1_5_2_4_2" x="210" y="1886" width="40" height="124" frameX="-172" frameY="-82" frameWidth="370" frameHeight="370"/>
+    <SubTexture name="role_1_5_2_4_3" x="210" y="1886" width="40" height="124" frameX="-172" frameY="-82" frameWidth="370" frameHeight="370"/>
+    <SubTexture name="role_1_5_2_4_4" x="328" y="1886" width="36" height="126" frameX="-176" frameY="-80" frameWidth="370" frameHeight="370"/>
+    <SubTexture name="role_1_5_2_4_5" x="86" y="1764" width="42" height="118" frameX="-171" frameY="-88" frameWidth="370" frameHeight="370"/>
+    <SubTexture name="role_1_5_2_4_6" x="378" y="128" width="60" height="76" frameX="-177" frameY="-154" frameWidth="370" frameHeight="370"/>
+    <SubTexture name="role_1_5_2_4_7" x="246" y="204" width="64" height="78" frameX="-175" frameY="-156" frameWidth="370" frameHeight="370"/>
+    <SubTexture name="role_1_5_2_4_8" x="246" y="204" width="64" height="78" frameX="-175" frameY="-156" frameWidth="370" frameHeight="370"/>
+    <SubTexture name="role_1_5_2_4_9" x="0" y="128" width="66" height="70" frameX="-177" frameY="-136" frameWidth="370" frameHeight="370"/>
+    
+    <SubTexture name="role_1_5_3_0_0" x="0" y="758" width="52" height="104" frameX="-156" frameY="-105" frameWidth="370" frameHeight="370"/>
+    <SubTexture name="role_1_5_3_0_1" x="42" y="972" width="68" height="108" frameX="-140" frameY="-121" frameWidth="370" frameHeight="370"/>
+    <SubTexture name="role_1_5_3_0_2" x="114" y="458" width="72" height="92" frameX="-136" frameY="-137" frameWidth="370" frameHeight="370"/>
+    <SubTexture name="role_1_5_3_0_3" x="154" y="368" width="50" height="88" frameX="-158" frameY="-141" frameWidth="370" frameHeight="370"/>
+    <SubTexture name="role_1_5_3_0_4" x="316" y="282" width="76" height="86" frameX="-159" frameY="-139" frameWidth="370" frameHeight="370"/>
+    <SubTexture name="role_1_5_3_0_5" x="0" y="368" width="76" height="86" frameX="-154" frameY="-139" frameWidth="370" frameHeight="370"/>
+    <SubTexture name="role_1_5_3_0_6" x="82" y="1530" width="76" height="114" frameX="-146" frameY="-117" frameWidth="370" frameHeight="370"/>
+    
+    <SubTexture name="role_1_5_3_1_0" x="0" y="864" width="52" height="106" frameX="-159" frameY="-98" frameWidth="370" frameHeight="370"/>
+    <SubTexture name="role_1_5_3_1_1" x="234" y="654" width="72" height="102" frameX="-139" frameY="-105" frameWidth="370" frameHeight="370"/>
+    <SubTexture name="role_1_5_3_1_2" x="76" y="368" width="78" height="88" frameX="-133" frameY="-119" frameWidth="370" frameHeight="370"/>
+    <SubTexture name="role_1_5_3_1_3" x="224" y="128" width="64" height="72" frameX="-147" frameY="-135" frameWidth="370" frameHeight="370"/>
+    <SubTexture name="role_1_5_3_1_4" x="126" y="60" width="90" height="66" frameX="-146" frameY="-138" frameWidth="370" frameHeight="370"/>
+    <SubTexture name="role_1_5_3_1_5" x="216" y="60" width="80" height="66" frameX="-145" frameY="-138" frameWidth="370" frameHeight="370"/>
+    <SubTexture name="role_1_5_3_1_6" x="364" y="458" width="78" height="96" frameX="-144" frameY="-111" frameWidth="370" frameHeight="370"/>
+    
+    <SubTexture name="role_1_5_3_2_0" x="0" y="1530" width="40" height="114" frameX="-174" frameY="-91" frameWidth="370" frameHeight="370"/>
+    <SubTexture name="role_1_5_3_2_1" x="134" y="1416" width="54" height="112" frameX="-156" frameY="-93" frameWidth="370" frameHeight="370"/>
+    <SubTexture name="role_1_5_3_2_2" x="178" y="654" width="56" height="102" frameX="-154" frameY="-103" frameWidth="370" frameHeight="370"/>
+    <SubTexture name="role_1_5_3_2_3" x="404" y="60" width="66" height="68" frameX="-156" frameY="-137" frameWidth="370" frameHeight="370"/>
+    <SubTexture name="role_1_5_3_2_4" x="0" y="60" width="72" height="60" frameX="-156" frameY="-145" frameWidth="370" frameHeight="370"/>
+    <SubTexture name="role_1_5_3_2_5" x="392" y="0" width="74" height="60" frameX="-155" frameY="-145" frameWidth="370" frameHeight="370"/>
+    <SubTexture name="role_1_5_3_2_6" x="306" y="458" width="58" height="94" frameX="-158" frameY="-110" frameWidth="370" frameHeight="370"/>
+    
+    <SubTexture name="role_1_5_3_3_0" x="384" y="1646" width="40" height="118" frameX="-187" frameY="-89" frameWidth="370" frameHeight="370"/>
+    <SubTexture name="role_1_5_3_3_1" x="254" y="1646" width="38" height="116" frameX="-185" frameY="-91" frameWidth="370" frameHeight="370"/>
+    <SubTexture name="role_1_5_3_3_2" x="266" y="758" width="34" height="106" frameX="-185" frameY="-101" frameWidth="370" frameHeight="370"/>
+    <SubTexture name="role_1_5_3_3_3" x="72" y="60" width="54" height="62" frameX="-185" frameY="-145" frameWidth="370" frameHeight="370"/>
+    <SubTexture name="role_1_5_3_3_4" x="134" y="0" width="58" height="50" frameX="-181" frameY="-157" frameWidth="370" frameHeight="370"/>
+    <SubTexture name="role_1_5_3_3_5" x="318" y="0" width="74" height="54" frameX="-178" frameY="-153" frameWidth="370" frameHeight="370"/>
+    <SubTexture name="role_1_5_3_3_6" x="68" y="458" width="46" height="92" frameX="-186" frameY="-116" frameWidth="370" frameHeight="370"/>
+    
+    <SubTexture name="role_1_5_3_4_0" x="80" y="1416" width="54" height="112" frameX="-188" frameY="-94" frameWidth="370" frameHeight="370"/>
+    <SubTexture name="role_1_5_3_4_1" x="112" y="654" width="66" height="102" frameX="-188" frameY="-104" frameWidth="370" frameHeight="370"/>
+    <SubTexture name="role_1_5_3_4_2" x="0" y="458" width="68" height="92" frameX="-188" frameY="-114" frameWidth="370" frameHeight="370"/>
+    <SubTexture name="role_1_5_3_4_3" x="192" y="0" width="52" height="50" frameX="-189" frameY="-156" frameWidth="370" frameHeight="370"/>
+    <SubTexture name="role_1_5_3_4_4" x="244" y="0" width="74" height="54" frameX="-162" frameY="-152" frameWidth="370" frameHeight="370"/>
+    <SubTexture name="role_1_5_3_4_5" x="66" y="128" width="80" height="70" frameX="-168" frameY="-141" frameWidth="370" frameHeight="370"/>
+    <SubTexture name="role_1_5_3_4_6" x="238" y="282" width="78" height="82" frameX="-175" frameY="-126" frameWidth="370" frameHeight="370"/>
+    
+    <SubTexture name="role_1_5_4_0_0" x="216" y="1764" width="34" height="120" frameX="-181" frameY="-102" frameWidth="370" frameHeight="370"/>
+    <SubTexture name="role_1_5_4_0_1" x="386" y="864" width="40" height="108" frameX="-185" frameY="-111" frameWidth="370" frameHeight="370"/>
+    <SubTexture name="role_1_5_4_0_2" x="170" y="1646" width="44" height="116" frameX="-172" frameY="-92" frameWidth="370" frameHeight="370"/>
+    <SubTexture name="role_1_5_4_0_3" x="250" y="1886" width="40" height="126" frameX="-175" frameY="-68" frameWidth="370" frameHeight="370"/>
+    <SubTexture name="role_1_5_4_0_4" x="290" y="1886" width="38" height="126" frameX="-176" frameY="-66" frameWidth="370" frameHeight="370"/>
+    <SubTexture name="role_1_5_4_0_5" x="364" y="1886" width="38" height="130" frameX="-176" frameY="-60" frameWidth="370" frameHeight="370"/>
+    <SubTexture name="role_1_5_4_0_6" x="412" y="1082" width="38" height="110" frameX="-180" frameY="-82" frameWidth="370" frameHeight="370"/>
+    <SubTexture name="role_1_5_4_0_7" x="0" y="1646" width="48" height="116" frameX="-180" frameY="-96" frameWidth="370" frameHeight="370"/>
+    
+    <SubTexture name="role_1_5_4_1_0" x="0" y="1304" width="60" height="112" frameX="-169" frameY="-106" frameWidth="370" frameHeight="370"/>
+    <SubTexture name="role_1_5_4_1_1" x="122" y="554" width="50" height="98" frameX="-180" frameY="-122" frameWidth="370" frameHeight="370"/>
+    <SubTexture name="role_1_5_4_1_2" x="250" y="1764" width="50" height="120" frameX="-179" frameY="-93" frameWidth="370" frameHeight="370"/>
+    <SubTexture name="role_1_5_4_1_3" x="464" y="1764" width="42" height="122" frameX="-187" frameY="-75" frameWidth="370" frameHeight="370"/>
+    <SubTexture name="role_1_5_4_1_4" x="128" y="1886" width="42" height="124" frameX="-188" frameY="-72" frameWidth="370" frameHeight="370"/>
+    <SubTexture name="role_1_5_4_1_5" x="40" y="1886" width="46" height="124" frameX="-189" frameY="-67" frameWidth="370" frameHeight="370"/>
+    <SubTexture name="role_1_5_4_1_6" x="446" y="972" width="48" height="110" frameX="-193" frameY="-88" frameWidth="370" frameHeight="370"/>
+    <SubTexture name="role_1_5_4_1_7" x="0" y="1764" width="44" height="118" frameX="-190" frameY="-97" frameWidth="370" frameHeight="370"/>
+    
+    <SubTexture name="role_1_5_4_2_0" x="242" y="458" width="64" height="94" frameX="-164" frameY="-111" frameWidth="370" frameHeight="370"/>
+    <SubTexture name="role_1_5_4_2_1" x="172" y="282" width="66" height="82" frameX="-168" frameY="-130" frameWidth="370" frameHeight="370"/>
+    <SubTexture name="role_1_5_4_2_2" x="356" y="1530" width="58" height="114" frameX="-180" frameY="-98" frameWidth="370" frameHeight="370"/>
+    <SubTexture name="role_1_5_4_2_3" x="88" y="1646" width="42" height="116" frameX="-188" frameY="-83" frameWidth="370" frameHeight="370"/>
+    <SubTexture name="role_1_5_4_2_4" x="262" y="1530" width="48" height="114" frameX="-188" frameY="-84" frameWidth="370" frameHeight="370"/>
+    <SubTexture name="role_1_5_4_2_5" x="292" y="1646" width="58" height="116" frameX="-187" frameY="-81" frameWidth="370" frameHeight="370"/>
+    <SubTexture name="role_1_5_4_2_6" x="0" y="1416" width="54" height="112" frameX="-200" frameY="-95" frameWidth="370" frameHeight="370"/>
+    <SubTexture name="role_1_5_4_2_7" x="148" y="1304" width="46" height="112" frameX="-179" frameY="-102" frameWidth="370" frameHeight="370"/>
+    
+    <SubTexture name="role_1_5_4_3_0" x="244" y="554" width="46" height="100" frameX="-172" frameY="-110" frameWidth="370" frameHeight="370"/>
+    <SubTexture name="role_1_5_4_3_1" x="422" y="204" width="64" height="78" frameX="-162" frameY="-132" frameWidth="370" frameHeight="370"/>
+    <SubTexture name="role_1_5_4_3_2" x="52" y="864" width="52" height="106" frameX="-174" frameY="-104" frameWidth="370" frameHeight="370"/>
+    <SubTexture name="role_1_5_4_3_3" x="214" y="1646" width="40" height="116" frameX="-185" frameY="-93" frameWidth="370" frameHeight="370"/>
+    <SubTexture name="role_1_5_4_3_4" x="444" y="1416" width="38" height="114" frameX="-186" frameY="-95" frameWidth="370" frameHeight="370"/>
+    <SubTexture name="role_1_5_4_3_5" x="352" y="1304" width="46" height="112" frameX="-184" frameY="-97" frameWidth="370" frameHeight="370"/>
+    <SubTexture name="role_1_5_4_3_6" x="124" y="758" width="42" height="104" frameX="-194" frameY="-108" frameWidth="370" frameHeight="370"/>
+    <SubTexture name="role_1_5_4_3_7" x="58" y="654" width="54" height="102" frameX="-174" frameY="-107" frameWidth="370" frameHeight="370"/>
+    
+    <SubTexture name="role_1_5_4_4_0" x="292" y="864" width="36" height="108" frameX="-179" frameY="-108" frameWidth="370" frameHeight="370"/>
+    <SubTexture name="role_1_5_4_4_1" x="474" y="368" width="38" height="90" frameX="-172" frameY="-128" frameWidth="370" frameHeight="370"/>
+    <SubTexture name="role_1_5_4_4_2" x="0" y="1082" width="46" height="110" frameX="-179" frameY="-108" frameWidth="370" frameHeight="370"/>
+    <SubTexture name="role_1_5_4_4_3" x="86" y="1886" width="42" height="124" frameX="-180" frameY="-94" frameWidth="370" frameHeight="370"/>
+    <SubTexture name="role_1_5_4_4_4" x="300" y="1764" width="40" height="120" frameX="-182" frameY="-98" frameWidth="370" frameHeight="370"/>
+    <SubTexture name="role_1_5_4_4_5" x="128" y="1764" width="42" height="118" frameX="-180" frameY="-100" frameWidth="370" frameHeight="370"/>
+    <SubTexture name="role_1_5_4_4_6" x="406" y="554" width="40" height="100" frameX="-177" frameY="-118" frameWidth="370" frameHeight="370"/>
+    <SubTexture name="role_1_5_4_4_7" x="162" y="972" width="48" height="110" frameX="-169" frameY="-108" frameWidth="370" frameHeight="370"/>
+    
+    <SubTexture name="role_1_5_5_0_0" x="204" y="368" width="46" height="88" frameX="-177" frameY="-109" frameWidth="370" frameHeight="370"/>
+    <SubTexture name="role_1_5_5_0_1" x="110" y="282" width="62" height="80" frameX="-163" frameY="-121" frameWidth="370" frameHeight="370"/>
+    
+    <SubTexture name="role_1_5_5_1_0" x="392" y="282" width="58" height="86" frameX="-192" frameY="-115" frameWidth="370" frameHeight="370"/>
+    <SubTexture name="role_1_5_5_1_1" x="0" y="204" width="100" height="76" frameX="-194" frameY="-134" frameWidth="370" frameHeight="370"/>
+    
+    <SubTexture name="role_1_5_5_2_0" x="188" y="204" width="58" height="76" frameX="-193" frameY="-130" frameWidth="370" frameHeight="370"/>
+    <SubTexture name="role_1_5_5_2_1" x="0" y="0" width="134" height="44" frameX="-196" frameY="-174" frameWidth="370" frameHeight="370"/>
+    
+    <SubTexture name="role_1_5_5_3_0" x="296" y="60" width="56" height="68" frameX="-192" frameY="-149" frameWidth="370" frameHeight="370"/>
+    <SubTexture name="role_1_5_5_3_1" x="250" y="368" width="138" height="90" frameX="-181" frameY="-192" frameWidth="370" frameHeight="370"/>
+    
+    <SubTexture name="role_1_5_5_4_0" x="352" y="60" width="52" height="68" frameX="-169" frameY="-156" frameWidth="370" frameHeight="370"/>
+    <SubTexture name="role_1_5_5_4_1" x="170" y="864" width="76" height="108" frameX="-168" frameY="-194" frameWidth="370" frameHeight="370"/>
+    
+    <SubTexture name="role_1_5_6_0_0" x="398" y="1304" width="42" height="112" frameX="-172" frameY="-85" frameWidth="370" frameHeight="370"/>
+    
+    <SubTexture name="role_1_5_6_1_0" x="350" y="1646" width="34" height="116" frameX="-179" frameY="-81" frameWidth="370" frameHeight="370"/>
+    
+    <SubTexture name="role_1_5_6_2_0" x="130" y="1646" width="40" height="116" frameX="-176" frameY="-81" frameWidth="370" frameHeight="370"/>
+    
+    <SubTexture name="role_1_5_6_3_0" x="414" y="1530" width="42" height="116" frameX="-176" frameY="-81" frameWidth="370" frameHeight="370"/>
+    
+    <SubTexture name="role_1_5_6_4_0" x="44" y="1764" width="42" height="118" frameX="-184" frameY="-84" frameWidth="370" frameHeight="370"/>
+</TextureAtlas>

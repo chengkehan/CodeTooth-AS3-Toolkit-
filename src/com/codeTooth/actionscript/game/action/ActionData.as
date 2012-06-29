@@ -254,7 +254,21 @@ package com.codeTooth.actionscript.game.action
 			return _clipsData;
 		}
 		
+		//------------------------------------------------------------------------------------------------------------------------------
+		// Clone
+		//------------------------------------------------------------------------------------------------------------------------------
+		
 		public function clone():ActionData
+		{
+			return cloneInternal(clipDataClone);
+		}
+		
+		public function cloneNoBitmapData():ActionData
+		{
+			return cloneInternal(clipDataCloneNoBitmapData);
+		}
+		
+		private function cloneInternal(clipDataCloneStrategy:Function):ActionData
 		{
 			if(_clipsData == null)
 			{
@@ -265,12 +279,26 @@ package com.codeTooth.actionscript.game.action
 				var newClipsData:Vector.<ClipData> = new Vector.<ClipData>();
 				for each(var clipData:ClipData in _clipsData)
 				{
-					newClipsData.push(clipData.clone());
+					newClipsData.push(clipDataCloneStrategy(clipData));
 				}
 				
-				return new ActionData(_id, newClipsData);
+				return new ActionData(_id, newClipsData, _origionX, _origionY, _numEmptyClipPrefix, _numEmptyClipSuffix);
 			}
 		}
+		
+		private function clipDataClone(clipData:ClipData):ClipData
+		{
+			return clipData.clone();
+		}
+		
+		private function clipDataCloneNoBitmapData(clipData:ClipData):ClipData
+		{
+			return clipData.cloneNoBitmapData();
+		}
+		
+		//------------------------------------------------------------------------------------------------------------------------------
+		// IDestroy
+		//------------------------------------------------------------------------------------------------------------------------------
 		
 		public function destroy():void
 		{
