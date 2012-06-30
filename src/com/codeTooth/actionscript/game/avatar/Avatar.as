@@ -17,6 +17,8 @@ package com.codeTooth.actionscript.game.avatar
 		{
 			initializeCanvas();
 			initializeSwapCanvas();
+			mouseEnabled = false;
+			mouseChildren = false;
 		}
 		
 		//------------------------------------------------------------------------------------------------------------------------------
@@ -126,8 +128,11 @@ package com.codeTooth.actionscript.game.avatar
 		
 		private function refreshCanvas(canvas:Action):void
 		{
-			canvas.gotoClip(_actionIndex);
-			canvas.refreshClip();
+			if(canvas.getActionData() != null)
+			{
+				canvas.gotoClip(_actionIndex);
+				canvas.refreshClip();
+			}
 		}
 		
 		//------------------------------------------------------------------------------------------------------------------------------

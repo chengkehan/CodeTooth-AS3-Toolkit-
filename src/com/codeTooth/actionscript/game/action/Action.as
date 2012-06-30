@@ -39,6 +39,11 @@ package com.codeTooth.actionscript.game.action
 				_currClipIndex = 0;
 				_clips = _actionData == null ? null : _actionData.getClipsData();
 				_numClips = _clips == null || _clips.length == 0 ? 0 : _clips.length;
+				
+				if(_numClips == 0 && bitmapData != null)
+				{
+					bitmapData = null;
+				}
 			}
 		}
 		
@@ -235,10 +240,13 @@ package com.codeTooth.actionscript.game.action
 			}
 			if(_numClips == 0)
 			{
-				bitmapData = null;
+				if(bitmapData != null)
+				{
+					bitmapData = null;
+				}
 				return;
 			}
-
+			
 			performanceClip(_currClipIndex);
 		}
 		
@@ -253,7 +261,10 @@ package com.codeTooth.actionscript.game.action
 		private function performanceClip(clipIndex:int):void
 		{
 			var clip:ClipData = _clips[clipIndex];
-			bitmapData = clip.bitmapData;
+			if(bitmapData != clip.bitmapData)
+			{
+				bitmapData = clip.bitmapData;
+			}
 			if(bitmapData != null)
 			{
 				super.x = _x - _actionData.origionX - clip.frameX;
@@ -273,22 +284,22 @@ package com.codeTooth.actionscript.game.action
 		{
 			return _x;
 		}
-
+		
 		override public function set x(value:Number):void
 		{
 			_x = value;
 		}
-
+		
 		override public function get y():Number
 		{
 			return _y;
 		}
-
+		
 		override public function set y(value:Number):void
 		{
 			_y = value;
 		}
-
+		
 		//------------------------------------------------------------------------------------------------------------------------------
 		// 实现 IDestroy 接口
 		//------------------------------------------------------------------------------------------------------------------------------
