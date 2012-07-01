@@ -77,6 +77,11 @@ package com.codeTooth.actionscript.game.avatar
 		 */
 		public function play(action:int):void
 		{
+			if(_actionsIndex == null)
+			{
+				return;
+			}
+			
 			if(_action == action)
 			{
 				_actionIndex = _actionIndex >= _action + _actionsIndex[_action] ? _action : _actionIndex;
