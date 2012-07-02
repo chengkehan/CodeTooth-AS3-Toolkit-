@@ -18,7 +18,7 @@ package com.codeTooth.actionscript.display
 	 * 使用png8存储源图片效果最佳（需要测试下原始图在256色下是否会颜色失帧）。
 	 * 使用jpg存储源图片时，由于jpg压缩算法的原因，根据jpg的品质不同，会出现不同程度的颜色失帧。
 	 */
-	public class MaskBitmapData
+	public class BitmapDataAlphaBlend
 	{
 		/**
 		 * 灰度图在原始图的右边
@@ -354,9 +354,9 @@ package com.codeTooth.actionscript.display
 		 */
 		public static function mixBitmapDataSimplely(maskBmpd:BitmapData, maskBmpdType:int):BitmapData
 		{
-			var action:BitmapData = MaskBitmapData.getAction(maskBmpd, maskBmpdType);
-			var mask:BitmapData = MaskBitmapData.getMask(maskBmpd, maskBmpdType);
-			MaskBitmapData.mixBitmapData(action, mask);
+			var action:BitmapData = BitmapDataAlphaBlend.getAction(maskBmpd, maskBmpdType);
+			var mask:BitmapData = BitmapDataAlphaBlend.getMask(maskBmpd, maskBmpdType);
+			BitmapDataAlphaBlend.mixBitmapData(action, mask);
 			mask.dispose();
 			
 			return action;
@@ -372,10 +372,10 @@ package com.codeTooth.actionscript.display
 		 */
 		public static function mixPixelsSimplely(maskBmpd:BitmapData, maskBmpdType:int):BitmapData
 		{
-			var action:Vector.<uint> = MaskBitmapData.getActionPixels(maskBmpd, maskBmpdType);
-			var mask:Vector.<uint> = MaskBitmapData.getMaskPixels(maskBmpd, maskBmpdType);
-			MaskBitmapData.mixPixels(action, mask);
-			var actionBmpd:BitmapData = MaskBitmapData.getAction(maskBmpd, maskBmpdType, true);
+			var action:Vector.<uint> = BitmapDataAlphaBlend.getActionPixels(maskBmpd, maskBmpdType);
+			var mask:Vector.<uint> = BitmapDataAlphaBlend.getMaskPixels(maskBmpd, maskBmpdType);
+			BitmapDataAlphaBlend.mixPixels(action, mask);
+			var actionBmpd:BitmapData = BitmapDataAlphaBlend.getAction(maskBmpd, maskBmpdType, true);
 			actionBmpd.setVector(actionBmpd.rect, action);
 			mask.length = 0;
 			action.length = 0;
@@ -393,10 +393,10 @@ package com.codeTooth.actionscript.display
 		 */
 		public static function mixBytesSimplely(maskBmpd:BitmapData, maskBmpdType:int):BitmapData
 		{
-			var action:ByteArray = MaskBitmapData.getActionBytes(maskBmpd, maskBmpdType);
-			var mask:ByteArray = MaskBitmapData.getMaskBytes(maskBmpd, maskBmpdType);
-			MaskBitmapData.mixBytes(action, mask);
-			var actionBmpd:BitmapData = MaskBitmapData.getAction(maskBmpd, maskBmpdType, true);
+			var action:ByteArray = BitmapDataAlphaBlend.getActionBytes(maskBmpd, maskBmpdType);
+			var mask:ByteArray = BitmapDataAlphaBlend.getMaskBytes(maskBmpd, maskBmpdType);
+			BitmapDataAlphaBlend.mixBytes(action, mask);
+			var actionBmpd:BitmapData = BitmapDataAlphaBlend.getAction(maskBmpd, maskBmpdType, true);
 			actionBmpd.setPixels(actionBmpd.rect, action);
 			action.clear();
 			mask.clear();
