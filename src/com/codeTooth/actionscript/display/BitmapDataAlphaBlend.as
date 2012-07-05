@@ -245,9 +245,8 @@ package com.codeTooth.actionscript.display
 					}
 					else
 					{
-						var roleColor:uint = action.getPixel32(w, h);
 						var roleAlpha:int = 0xFF * (maskColor / 0xFFFFFF);
-						action.setPixel32(w, h, (roleAlpha << 24) + roleColor);
+						action.setPixel32(w, h, (roleAlpha << 24) + (action.getPixel32(w, h) & 0xFFFFFF));
 					}
 				}
 				
@@ -291,9 +290,8 @@ package com.codeTooth.actionscript.display
 				}
 				else
 				{
-					var roleColor:uint = action[i];
 					var roleAlpha:int = 0xFF * (maskColor / 0xFFFFFF);
-					action[i] = (roleAlpha << 24) + roleColor;
+					action[i] = (roleAlpha << 24) + (action[i] & 0xFFFFFF);
 				}
 			}
 		}
