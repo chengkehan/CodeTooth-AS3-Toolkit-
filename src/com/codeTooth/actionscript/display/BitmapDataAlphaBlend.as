@@ -281,11 +281,11 @@ package com.codeTooth.actionscript.display
 			for (var i:int = 0; i < length; i++) 
 			{
 				var maskColor:uint = mask[i];
-				if(maskColor == 0x000000)
+				if(maskColor == 0xFF000000)
 				{
 					action[i] = 0x00000000;
 				}
-				else if(maskColor == 0xFFFFFF)
+				else if(maskColor == 0xFFFFFFFF)
 				{
 					// Do nothing
 				}
