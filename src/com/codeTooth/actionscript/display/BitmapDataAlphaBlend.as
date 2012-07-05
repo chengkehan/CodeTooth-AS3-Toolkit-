@@ -279,19 +279,17 @@ package com.codeTooth.actionscript.display
 			var length:uint = action.length;
 			for (var i:int = 0; i < length; i++) 
 			{
-				var maskColor:uint = mask[i];
-				if(maskColor == 0xFF000000)
+				if(mask[i] == 0xFF000000)
 				{
 					action[i] = 0x00000000;
 				}
-				else if(maskColor == 0xFFFFFFFF)
+				else if(mask[i] == 0xFFFFFFFF)
 				{
 					// Do nothing
 				}
 				else
 				{
-					var roleAlpha:int = 0xFF * (maskColor / 0xFFFFFF);
-					action[i] = (roleAlpha << 24) + (action[i] & 0xFFFFFF);
+					action[i] = ((0xFF * (mask[i] / 0xFFFFFF)) << 24) + (action[i] & 0xFFFFFF);
 				}
 			}
 		}
