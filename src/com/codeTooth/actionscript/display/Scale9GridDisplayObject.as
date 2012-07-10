@@ -1,14 +1,14 @@
-package com.codeTooth.actionscript.display 
+package com.codeTooth.actionscript.display
 {
 	import com.codeTooth.actionscript.lang.utils.destroy.IDestroy;
+	
 	import flash.display.DisplayObject;
 	import flash.display.Sprite;
 	
 	/**
 	 * 9宫格显示对象缩放
 	 */
-	public class Scale9GridDisplayObject extends Sprite 
-											implements IDestroy
+	public class Scale9GridDisplayObject extends Sprite implements IDestroy
 	{
 		/**
 		 * 构造函数
@@ -87,7 +87,7 @@ package com.codeTooth.actionscript.display
 		/**
 		 * 左上
 		 */
-		public function get topLeft():DisplayObject 
+		public function getTopLeft():DisplayObject 
 		{ 
 			return _topLeft; 
 		}
@@ -95,7 +95,7 @@ package com.codeTooth.actionscript.display
 		/**
 		 * @private
 		 */
-		public function set topLeft(obj:DisplayObject):void 
+		public function setTopLeft(obj:DisplayObject):void 
 		{
 			destroyTopLeft();
 			_topLeft = obj;
@@ -106,6 +106,10 @@ package com.codeTooth.actionscript.display
 		{
 			if (_topLeft != null)
 			{
+				if(_topLeft.parent != this)
+				{
+					addChild(_topLeft);
+				}
 				_topLeft.width = _leftSize;
 				_topLeft.height = _topSize;
 			}
@@ -115,7 +119,7 @@ package com.codeTooth.actionscript.display
 		{
 			if (_topLeft != null)
 			{
-				if (contains(_topLeft))
+				if(_topLeft.parent == this)
 				{
 					removeChild(_topLeft);
 				}
@@ -129,7 +133,7 @@ package com.codeTooth.actionscript.display
 		/**
 		 * 上
 		 */
-		public function get top():DisplayObject 
+		public function getTop():DisplayObject 
 		{ 
 			return _top; 
 		}
@@ -137,7 +141,7 @@ package com.codeTooth.actionscript.display
 		/**
 		 * @private
 		 */
-		public function set top(obj:DisplayObject):void 
+		public function setTop(obj:DisplayObject):void 
 		{
 			destroyTop();
 			_top = obj;
@@ -148,6 +152,10 @@ package com.codeTooth.actionscript.display
 		{
 			if (_top != null)
 			{
+				if(_top.parent != this)
+				{
+					addChild(_top);
+				}
 				_top.width = _width - _leftSize - _rightSize;
 				_top.height = _topSize;
 				_top.x = _leftSize;
@@ -158,7 +166,7 @@ package com.codeTooth.actionscript.display
 		{
 			if (_top != null)
 			{
-				if (contains(_top))
+				if (_top.parent == this)
 				{
 					removeChild(_top);
 				}
@@ -172,7 +180,7 @@ package com.codeTooth.actionscript.display
 		/**
 		 * 右上
 		 */
-		public function get topRight():DisplayObject 
+		public function getTopRight():DisplayObject 
 		{ 
 			return _topRight; 
 		}
@@ -180,7 +188,7 @@ package com.codeTooth.actionscript.display
 		/**
 		 * @private
 		 */
-		public function set topRight(obj:DisplayObject):void 
+		public function setTopRight(obj:DisplayObject):void 
 		{
 			destroyTopRight();
 			_topRight = obj;
@@ -191,6 +199,10 @@ package com.codeTooth.actionscript.display
 		{
 			if (_topRight != null)
 			{
+				if(_topRight.parent != this)
+				{
+					addChild(_topRight);
+				}
 				_topRight.width = _rightSize;
 				_topRight.height = _topSize;
 				_topRight.x = _width - _rightSize;
@@ -201,7 +213,7 @@ package com.codeTooth.actionscript.display
 		{
 			if (_topRight != null)
 			{
-				if (contains(_topRight))
+				if (_topRight.parent == this)
 				{
 					removeChild(_topRight);
 				}
@@ -215,7 +227,7 @@ package com.codeTooth.actionscript.display
 		/**
 		 * 左
 		 */
-		public function get left():DisplayObject 
+		public function getLeft():DisplayObject 
 		{ 
 			return _left; 
 		}
@@ -223,7 +235,7 @@ package com.codeTooth.actionscript.display
 		/**
 		 * @private
 		 */
-		public function set left(obj:DisplayObject):void 
+		public function setLeft(obj:DisplayObject):void 
 		{
 			destroyLeft();
 			_left = obj;
@@ -234,6 +246,10 @@ package com.codeTooth.actionscript.display
 		{
 			if (_left != null)
 			{
+				if(_left.parent != this)
+				{
+					addChild(_left);
+				}
 				_left.width = _leftSize;
 				_left.height = _height - _topSize - _bottomSize;
 				_left.y = _topSize;
@@ -244,7 +260,7 @@ package com.codeTooth.actionscript.display
 		{
 			if (_left != null)
 			{
-				if (contains(_left))
+				if(_left.parent == this)
 				{
 					removeChild(_left);
 				}
@@ -258,7 +274,7 @@ package com.codeTooth.actionscript.display
 		/**
 		 * 中
 		 */
-		public function get center():DisplayObject 
+		public function getCenter():DisplayObject 
 		{ 
 			return _center; 
 		}
@@ -266,7 +282,7 @@ package com.codeTooth.actionscript.display
 		/**
 		 * @private
 		 */
-		public function set center(obj:DisplayObject):void 
+		public function setCenter(obj:DisplayObject):void 
 		{
 			destroyCenter();
 			_center = obj;
@@ -277,6 +293,10 @@ package com.codeTooth.actionscript.display
 		{
 			if (_center != null)
 			{
+				if(_center.parent != this)
+				{
+					addChild(_center);
+				}
 				_center.width = _width - _leftSize - _rightSize;
 				_center.height = _height - _topSize - _bottomSize;
 				_center.x = _leftSize;
@@ -288,7 +308,7 @@ package com.codeTooth.actionscript.display
 		{
 			if (_center != null)
 			{
-				if (contains(_center))
+				if(_center.parent == this)
 				{
 					removeChild(_center);
 				}
@@ -302,7 +322,7 @@ package com.codeTooth.actionscript.display
 		/**
 		 * 右
 		 */
-		public function get right():DisplayObject 
+		public function getRight():DisplayObject 
 		{ 
 			return _right; 
 		}
@@ -310,7 +330,7 @@ package com.codeTooth.actionscript.display
 		/**
 		 * @private
 		 */
-		public function set right(obj:DisplayObject):void 
+		public function setRight(obj:DisplayObject):void 
 		{
 			destroyRight();
 			_right = obj;
@@ -321,6 +341,10 @@ package com.codeTooth.actionscript.display
 		{
 			if (_right != null)
 			{
+				if(_right.parent != this)
+				{
+					addChild(_right);
+				}
 				_right.width = _rightSize;
 				_right.height = _height - _topSize - _bottomSize;
 				_right.x = _width - _rightSize;
@@ -332,7 +356,7 @@ package com.codeTooth.actionscript.display
 		{
 			if (_right != null)
 			{
-				if (contains(_right))
+				if(_right.parent == this)
 				{
 					removeChild(_right);
 				}
@@ -346,7 +370,7 @@ package com.codeTooth.actionscript.display
 		/**
 		 * 左下
 		 */
-		public function get bottomLeft():DisplayObject 
+		public function getBottomLeft():DisplayObject 
 		{ 
 			return _bottomLeft; 
 		}
@@ -354,7 +378,7 @@ package com.codeTooth.actionscript.display
 		/**
 		 * @private
 		 */
-		public function set bottomLeft(obj:DisplayObject):void 
+		public function setBottomLeft(obj:DisplayObject):void 
 		{
 			destroyBottomLeft();
 			_bottomLeft = obj;
@@ -365,6 +389,10 @@ package com.codeTooth.actionscript.display
 		{
 			if (_bottomLeft != null)
 			{
+				if(_bottomLeft.parent != this)
+				{
+					addChild(_bottomLeft);
+				}
 				_bottomLeft.width = _leftSize;
 				_bottomLeft.height = _bottomSize;
 				_bottomLeft.y = _height - _bottomSize;
@@ -375,7 +403,7 @@ package com.codeTooth.actionscript.display
 		{
 			if (_bottomLeft != null)
 			{
-				if (contains(_bottomLeft))
+				if(_bottomLeft.parent == this)
 				{
 					removeChild(_bottomLeft);
 				}
@@ -389,7 +417,7 @@ package com.codeTooth.actionscript.display
 		/**
 		 * 下
 		 */
-		public function get bottom():DisplayObject 
+		public function getBottom():DisplayObject 
 		{ 
 			return _bottom; 
 		}
@@ -397,7 +425,7 @@ package com.codeTooth.actionscript.display
 		/**
 		 * @private
 		 */
-		public function set bottom(obj:DisplayObject):void 
+		public function setBottom(obj:DisplayObject):void 
 		{
 			destroyBottom();
 			_bottom = obj;
@@ -408,6 +436,10 @@ package com.codeTooth.actionscript.display
 		{
 			if (_bottom != null)
 			{
+				if(_bottom.parent != this)
+				{
+					addChild(_bottom);
+				}
 				_bottom.width = _width - _leftSize - _rightSize;
 				_bottom.height = _bottomSize;
 				_bottom.x = _leftSize;
@@ -419,7 +451,7 @@ package com.codeTooth.actionscript.display
 		{
 			if (_bottom != null)
 			{
-				if (contains(_bottom))
+				if(_bottom.parent == this)
 				{
 					removeChild(_bottom);
 				}
@@ -433,7 +465,7 @@ package com.codeTooth.actionscript.display
 		/**
 		 * 右下
 		 */
-		public function get bottomRight():DisplayObject 
+		public function getBottomRight():DisplayObject 
 		{ 
 			return _bottomRight; 
 		}
@@ -441,7 +473,7 @@ package com.codeTooth.actionscript.display
 		/**
 		 * @private
 		 */
-		public function set bottomRight(obj:DisplayObject):void 
+		public function setBottomRight(obj:DisplayObject):void 
 		{
 			destroyBottomRight();
 			_bottomRight = obj;
@@ -452,6 +484,10 @@ package com.codeTooth.actionscript.display
 		{
 			if (_bottomRight != null)
 			{
+				if(_bottomRight.parent != this)
+				{
+					addChild(_bottomRight);
+				}
 				_bottomRight.width = _rightSize;
 				_bottomRight.height = _bottomSize;
 				_bottomRight.x = _width - _rightSize;
@@ -463,7 +499,7 @@ package com.codeTooth.actionscript.display
 		{
 			if (_bottomRight != null)
 			{
-				if (contains(_bottomRight))
+				if(_bottomRight.parent == this)
 				{
 					removeChild(_bottomRight);
 				}
@@ -594,5 +630,5 @@ package com.codeTooth.actionscript.display
 		}
 		
 	}
-
+	
 }
