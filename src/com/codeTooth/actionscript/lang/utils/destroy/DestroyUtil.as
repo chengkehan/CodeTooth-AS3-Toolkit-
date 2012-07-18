@@ -2,6 +2,7 @@ package com.codeTooth.actionscript.lang.utils.destroy
 {		
 	import flash.display.Bitmap;
 	import flash.display.BitmapData;
+	import flash.display.DisplayObject;
 	import flash.display.DisplayObjectContainer;
 	import flash.display.Loader;
 	import flash.display.MovieClip;
@@ -221,6 +222,19 @@ package com.codeTooth.actionscript.lang.utils.destroy
 			}
 			
 			return container;
+		}
+		
+		public static function removeChild(child:DisplayObject, parent:DisplayObjectContainer):void
+		{
+			if(child == null || parent == null)
+			{
+				return;
+			}
+			
+			if(child.parent == parent)
+			{
+				parent.removeChild(child);
+			}
 		}
 		
 		/**
