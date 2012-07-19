@@ -224,6 +224,26 @@ package com.codeTooth.actionscript.lang.utils.destroy
 			return container;
 		}
 		
+		public static function addChild(child:DisplayObject, parent:DisplayObjectContainer, index:int = -1, addRepeating:Boolean = false):void
+		{
+			if(child == null || parent == null)
+			{
+				return;
+			}
+			
+			if(child.parent != parent || (child.parent == parent && addRepeating))
+			{
+				if(index == -1)
+				{
+					parent.addChild(child);
+				}
+				else
+				{
+					parent.addChildAt(child, index);
+				}
+			}
+		}
+		
 		public static function removeChild(child:DisplayObject, parent:DisplayObjectContainer):void
 		{
 			if(child == null || parent == null)
