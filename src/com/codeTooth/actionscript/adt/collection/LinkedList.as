@@ -90,6 +90,7 @@ package com.codeTooth.actionscript.adt.collection
 					var node:Node = new Node(currNode, currNode.prev, value);
 					currNode.prev.next = node;
 					currNode.prev = node;
+					++_length;
 					break;
 				}
 				currNode = currNode.next;
@@ -114,6 +115,7 @@ package com.codeTooth.actionscript.adt.collection
 					currNode.prev.next = currNode.next;
 					var value:Object = currNode.value;
 					currNode.destroy();
+					--_length;
 					return value;
 				}
 				currNode = currNode.next;
@@ -121,6 +123,20 @@ package com.codeTooth.actionscript.adt.collection
 			
 			throw new IllegalOperationException();
 			return null;
+		}
+		
+		public function deleteAll():void
+		{
+			var currNode:Node = _head.next;
+			while(currNode != _tail)
+			{
+				var nextNode:Node = currNode.next;
+				currNode.destroy();
+				currNode = nextNode;
+			}
+			_head.next = _tail;
+			_tail.prev = _head;
+			_length = 0;
 		}
 		
 		public function destroy():void
