@@ -1,8 +1,10 @@
 package com.codeTooth.actionscript.adt.collection
 {
+	import com.codeTooth.actionscript.lang.exceptions.IllegalOperationException;
+	import com.codeTooth.actionscript.lang.exceptions.IndexOutOfBoundsException;
+	import com.codeTooth.actionscript.lang.exceptions.NoSuchObjectException;
 	import com.codeTooth.actionscript.lang.utils.Common;
 	import com.codeTooth.actionscript.lang.utils.destroy.IDestroy;
-	import com.codeTooth.actionscript.lang.exceptions.NoSuchObjectException;
 
 	/**
 	 * 链表
@@ -69,6 +71,56 @@ package com.codeTooth.actionscript.adt.collection
 			--_length;
 			
 			return value;
+		}
+		
+		public function insert(value:Object, index:int):void
+		{
+			if(index < 0 || index > _length)
+			{
+				throw new IndexOutOfBoundsException("Index:" + index + ". Legal from 0 to" + _length + ".");
+			}
+			
+			var length:int = _length + 2;
+			var index:int = index + 1;
+			var currNode:Node = _head;
+			for (var i:int = 0; i < length; i++) 
+			{
+				if(i == index)
+				{
+					var node:Node = new Node(currNode, currNode.prev, value);
+					currNode.prev.next = node;
+					currNode.prev = node;
+					break;
+				}
+				currNode = currNode.next;
+			}
+		}
+		
+		public function deleteAt(index:int):*
+		{
+			if(index < 0 || index > _length)
+			{
+				throw new IndexOutOfBoundsException("Index:" + index + ". Legal from 0 to " + (_length - 1) + ".");
+			}
+			
+			var length:int = _length + 2;
+			var index:int = index + 1;
+			var currNode:Node = _head;
+			for (var i:int = 0; i < length; i++) 
+			{
+				if(i == index)
+				{
+					currNode.next.prev = currNode.prev;
+					currNode.prev.next = currNode.next;
+					var value:Object = currNode.value;
+					currNode.destroy();
+					return value;
+				}
+				currNode = currNode.next;
+			}
+			
+			throw new IllegalOperationException();
+			return null;
 		}
 		
 		public function destroy():void
