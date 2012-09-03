@@ -61,6 +61,7 @@ package com.codeTooth.actionscript.lang.utils
 		public function startWrite():void
 		{
 			_position = 0;
+			_bytes.position = 0;
 		}
 		
 		public function writeBytes(srcBytes:ByteArray, srcOffset:int, numBytes:uint):void
@@ -130,6 +131,7 @@ package com.codeTooth.actionscript.lang.utils
 		public function startRead():void
 		{
 			_position = 0;
+			_bytes.position = 0;
 		}
 		
 		public function readBytes(targetBytes:ByteArray, srcOffset:int, numBytes:int):void
