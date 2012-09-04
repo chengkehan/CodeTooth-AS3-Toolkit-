@@ -695,6 +695,61 @@ package com.codeTooth.actionscript.lang.utils
 				return false;
 			}
 		}
+		
+		/**
+		 * 对传入的字符串用ByteArray进行压缩，返回压缩后的新字符串
+		 * 
+		 * @param srcStr
+		 * @return 
+		 */
+		public static function getCompressedString(srcStr:String, fixUnprintableChar:Boolean = false):String
+		{
+			if(srcStr == null)
+			{
+				throw new NullPointerException("Null input srcStr parameter.");
+			}
+			
+			_byteArray.clear();
+			_byteArray.writeUTFBytes(srcStr);
+			_byteArray.compress();
+			
+			var size:int = _byteArray.length;
+			var oStr:String = "";
+			var fixValue:int = fixUnprintableChar ? 32 : 0;
+			for (var i:int = 0; i < size; i++) 
+			{
+				oStr += String.fromCharCode(_byteArray[i] + fixValue);
+			}
+			_byteArray.clear();
+			
+			return oStr;
+		}
+		
+		/**
+		 * 将使用getCompressedString方法压缩得到的字符串，解压会原始的字符串
+		 * 
+		 * @param compressedStr
+		 * @return 
+		 */
+		public static function getUncompressedString(compressedStr:String, fixUnprintableChar:Boolean = false):String
+		{
+			if(compressedStr == null)
+			{
+				throw new NullPointerException("Null input compressedStr parameter.");
+			}
+			
+			_byteArray.clear();
+			var fixValue:int = fixUnprintableChar ? 32 : 0;
+			var size:int = compressedStr.length;
+			for (var i:int = 0; i < size; i++) 
+			{
+				_byteArray[i] = compressedStr.charCodeAt(i) - fixValue;
+			}
+			_byteArray.uncompress();
+			var oStr:String = _byteArray.readUTFBytes(_byteArray.length);
+			_byteArray.clear();
+			
+			return oStr;
+		}
 	}
-
 }
