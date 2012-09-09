@@ -4,7 +4,7 @@ package com.codeTooth.actionscript.lang.utils
 
 	public class ConstructObject
 	{
-		public static function newConstructorApply(type:Class, args:Array):*
+		public static function newConstructorApply(type:Object, args:Array):*
 		{
 			if(args == null)
 			{
@@ -52,7 +52,7 @@ package com.codeTooth.actionscript.lang.utils
 			}
 		}
 		
-		public static function newConstructorCall(type:Class, ...args):*
+		public static function newConstructorCall(type:Object, ...args):*
 		{
 			return newConstructorApply(type, args);
 		}
