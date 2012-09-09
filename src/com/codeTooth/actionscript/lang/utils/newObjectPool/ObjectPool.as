@@ -1,12 +1,12 @@
 package com.codeTooth.actionscript.lang.utils.newObjectPool
 {
+	import com.codeTooth.actionscript.lang.exceptions.IllegalOperationException;
+	import com.codeTooth.actionscript.lang.exceptions.NoSuchObjectException;
 	import com.codeTooth.actionscript.lang.utils.destroy.DestroyUtil;
 	import com.codeTooth.actionscript.lang.utils.destroy.IDestroy;
+	import com.codeTooth.actionscript.lang.utils.newObjectPool.Pool;
 	
 	import flash.utils.Dictionary;
-	import com.codeTooth.actionscript.lang.utils.newObjectPool.Pool;
-	import com.codeTooth.actionscript.lang.exceptions.NoSuchObjectException;
-	import com.codeTooth.actionscript.lang.exceptions.IllegalOperationException;
 
 	/**
 	 * 对象池。
@@ -34,9 +34,9 @@ package com.codeTooth.actionscript.lang.utils.newObjectPool
 		 * @param invokeBeforeGet 在取出一个对象之前，对此对象调用的函数。原型func(obj:type):void
 		 * @param invokeDisposeObject 销毁对象池时，对此对象调用的函数。原型func(obj:type):void
 		 * 
-		 * @return 返回是否成功创建了对象池。如果已经存在了返回false
+		 * @throws com.codeTooth.actionscript.lang.exceptions.IllegalOperationException 对象池已经存在
 		 */
-		public function createPool(type:Class, alias:Object = null, invokeAfterPut:Function = null, invokeBeforeGet:Function = null, invokeDisposeObject:Function = null):void
+		public function createPool(type:Object, alias:Object = null, invokeAfterPut:Function = null, invokeBeforeGet:Function = null, invokeDisposeObject:Function = null):void
 		{
 			if(containsPool(type))
 			{
@@ -58,13 +58,31 @@ package com.codeTooth.actionscript.lang.utils.newObjectPool
 		}
 		
 		/**
+		 * 创建一个对象池。
+		 * 相比createPool方法，当对象池已经存在时，不会报错，而是返回false。
+		 * 创建成功返回true
+		 */
+		public function createPoolSafely(type:Object, alias:Object = null, invokeAfterPut:Function = null, invokeBeforeGet:Function = null, invokeDisposeObject:Function = null):Boolean
+		{
+			if(containsPool(type))
+			{
+				return false;
+			}
+			else
+			{
+				createPool(type, alias, invokeAfterPut, invokeBeforeGet, invokeDisposeObject);
+				return true;
+			}
+		}
+		
+		/**
 		 * 向指定类型的对象池放入一个对象。
 		 * 
 		 * @param instance 
 		 * @param type 
 		 * @param alias 
 		 */
-		public function putObject(instance:Object, type:Class, alias:Object = null):void
+		public function putObject(instance:Object, type:Object, alias:Object = null):void
 		{
 			(type == null ? getPoolByAlias(alias) : getPool(type)).putObject(instance);
 		}
@@ -77,7 +95,7 @@ package com.codeTooth.actionscript.lang.utils.newObjectPool
 		 * 
 		 * @return 返回取出的对象。如果池已空，那么会new一个新对象返回。
 		 */
-		public function getObject(type:Class, alias:Object = null):*
+		public function getObject(type:Object, alias:Object = null):*
 		{
 			return (type == null ? getPoolByAlias(alias) : getPool(type)).getObject();
 		}
@@ -90,7 +108,7 @@ package com.codeTooth.actionscript.lang.utils.newObjectPool
 		 * 
 		 * @return 返回取出的对象。如果池已空，那么会new一个新对象返回。
 		 */
-		public function getObjectByArgs(type:Class, alias:Object = null, ...args):*
+		public function getObjectByArgs(type:Object, alias:Object = null, ...args):*
 		{
 			return (type == null ? getPoolByAlias(alias) : getPool(type)).getObject(args);
 		}
@@ -101,7 +119,7 @@ package com.codeTooth.actionscript.lang.utils.newObjectPool
 		 * @param type
 		 * @return 
 		 */
-		public function containsPool(type:Class):Boolean
+		public function containsPool(type:Object):Boolean
 		{
 			return _pools[type] != null;
 		}
@@ -125,7 +143,7 @@ package com.codeTooth.actionscript.lang.utils.newObjectPool
 		 * @param poolType
 		 * @param alias
 		 */
-		public function resetPoolObjectsDataForFree(poolType:Class, alias:Object = null):void
+		public function resetPoolObjectsDataForFree(poolType:Object, alias:Object = null):void
 		{
 			(poolType == null ? getPoolByAlias(alias) : getPool(poolType)).resetObjectsDataForFree();
 		}
@@ -138,7 +156,7 @@ package com.codeTooth.actionscript.lang.utils.newObjectPool
 		 * 所谓活跃度，就是被put入池，或者，被从池中get。
 		 * @param alias
 		 */
-		public function freePoolObjectsByInactiveTime(poolType:Class, inactiveTime:int, alias:Object = null):void
+		public function freePoolObjectsByInactiveTime(poolType:Object, inactiveTime:int, alias:Object = null):void
 		{
 			(poolType == null ? getPoolByAlias(alias) : getPool(poolType)).freeObjectsByInactiveTime(inactiveTime);
 		}
@@ -151,7 +169,7 @@ package com.codeTooth.actionscript.lang.utils.newObjectPool
 		 * 所谓被使用的次数，就是被从池中get的次数。
 		 * @param alias
 		 */
-		public function freePoolObjectsByUsedTimes(poolType:Class, usedTimes:int, alias:Object = null):void
+		public function freePoolObjectsByUsedTimes(poolType:Object, usedTimes:int, alias:Object = null):void
 		{
 			(poolType == null ? getPoolByAlias(alias) : getPool(poolType)).freeObjectsByUsedTimes(usedTimes);
 		}
@@ -163,7 +181,7 @@ package com.codeTooth.actionscript.lang.utils.newObjectPool
 		 * @param alias
 		 * @return 
 		 */
-		public function getPoolSize(poolType:Class, alias:Object = null):int
+		public function getPoolSize(poolType:Object, alias:Object = null):int
 		{
 			return (poolType == null ? getPoolByAlias(alias) : getPool(poolType)).size;
 		}
@@ -175,7 +193,7 @@ package com.codeTooth.actionscript.lang.utils.newObjectPool
 		 * @param alias
 		 * @return 
 		 */
-		public function getPoolSizeInUsing(poolType:Class, alias:Object = null):int
+		public function getPoolSizeInUsing(poolType:Object, alias:Object = null):int
 		{
 			return (poolType == null ? getPoolByAlias(alias) : getPool(poolType)).sizeInUsing;
 		}
@@ -187,7 +205,7 @@ package com.codeTooth.actionscript.lang.utils.newObjectPool
 		 * @param alias
 		 * @return 
 		 */
-		public function getPoolSizeFree(poolType:Class, alias:Object = null):int
+		public function getPoolSizeFree(poolType:Object, alias:Object = null):int
 		{
 			return (poolType == null ? getPoolByAlias(alias) : getPool(poolType)).sizeFree;
 		}
@@ -235,7 +253,7 @@ package com.codeTooth.actionscript.lang.utils.newObjectPool
 		 * 
 		 * @param type
 		 */
-		public function disposePool(type:Class):void
+		public function disposePool(type:Object):void
 		{
 			if(containsPool(type))
 			{
@@ -305,7 +323,7 @@ package com.codeTooth.actionscript.lang.utils.newObjectPool
 			}
 		}
 		
-		private function getPool(type:Class):Pool
+		private function getPool(type:Object):Pool
 		{
 			var pool:Pool = _pools[type];
 			if(pool == null)

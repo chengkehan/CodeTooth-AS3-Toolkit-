@@ -1,6 +1,7 @@
 package com.codeTooth.actionscript.lang.utils.newObjectPool
 {
 	import com.codeTooth.actionscript.adt.collection.Map;
+	import com.codeTooth.actionscript.lang.exceptions.NullPointerException;
 	import com.codeTooth.actionscript.lang.utils.ConstructObject;
 	import com.codeTooth.actionscript.lang.utils.destroy.DestroyUtil;
 	import com.codeTooth.actionscript.lang.utils.destroy.IDestroy;
@@ -8,11 +9,10 @@ package com.codeTooth.actionscript.lang.utils.newObjectPool
 	
 	import flash.utils.Dictionary;
 	import flash.utils.getTimer;
-	import com.codeTooth.actionscript.lang.exceptions.NullPointerException;
 
 	internal class Pool implements IDestroy
 	{
-		private var _type:Class = null;
+		private var _type:Object = null;
 		
 		private var _itemsInUsing:Map = null;
 		
@@ -26,7 +26,7 @@ package com.codeTooth.actionscript.lang.utils.newObjectPool
 		
 		private var _alias:Object = null;
 		
-		public function Pool(type:Class, alias:Object = null, invokeAfterPut:Function = null, invokeBeforeGet:Function = null, invokeDisposeObject:Function = null)
+		public function Pool(type:Object, alias:Object = null, invokeAfterPut:Function = null, invokeBeforeGet:Function = null, invokeDisposeObject:Function = null)
 		{
 			if(type == null)
 			{
@@ -137,7 +137,7 @@ package com.codeTooth.actionscript.lang.utils.newObjectPool
 			return _alias;
 		}
 		
-		public function getType():Class
+		public function getType():Object
 		{
 			return _type;
 		}
