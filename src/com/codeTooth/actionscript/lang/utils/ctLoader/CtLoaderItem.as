@@ -1,5 +1,6 @@
 package com.codeTooth.actionscript.lang.utils.ctLoader
 {
+	import com.codeTooth.actionscript.lang.exceptions.IllegalParameterException;
 	import com.codeTooth.actionscript.lang.utils.ConstructObject;
 	import com.codeTooth.actionscript.lang.utils.destroy.IDestroy;
 	import com.codeTooth.actionscript.lang.utils.newObjectPool.ObjectPool;
@@ -36,6 +37,10 @@ package com.codeTooth.actionscript.lang.utils.ctLoader
 		
 		public static const STATE_DESTROY:int = 8;
 		
+		public static const TYPE_NORMAL:int = 1;
+		
+		public static const TYPE_BINARY:int = 2;
+		
 		private static var _objectPool:ObjectPool = null;
 		
 		private var _state:int = STATE_READY;
@@ -64,6 +69,8 @@ package com.codeTooth.actionscript.lang.utils.ctLoader
 		
 		private var _bytesTotal:int = 0;
 		
+		private var _loaderType:int = 0;
+		
 		public function CtLoaderItem()
 		{
 			if(_objectPool == null)
@@ -71,6 +78,11 @@ package com.codeTooth.actionscript.lang.utils.ctLoader
 				_objectPool = new ObjectPool();
 				_objectPool.createPoolSafely(Vector.<Function>, null, objectPoolInvokeAfterPut);
 			}
+		}
+		
+		public function get loaderType():int
+		{
+			return _loaderType;
 		}
 		
 		public function get url():String
@@ -169,7 +181,7 @@ package com.codeTooth.actionscript.lang.utils.ctLoader
 			return _urlLoader;
 		}
 		
-		internal function load(url:String, context:LoaderContext = null,  
+		internal function load(url:String, context:LoaderContext = null, loaderType:int = 3, 
 							   completeCallback:Function = null, ioErrorCallback:Function = null, 
 							   binaryCompleteCallback:Function = null, binaryProgressCallback:Function = null, 
 							   binaryIOErrorCallback:Function = null, binarySecurityErrorCallback:Function = null):Boolean
@@ -211,6 +223,11 @@ package com.codeTooth.actionscript.lang.utils.ctLoader
 				}
 				else if(_state == STATE_READY)
 				{
+					if(!(loaderType & TYPE_NORMAL) && !(loaderType & TYPE_BINARY))
+					{
+						throw new IllegalParameterException("Illegal loaderType parameter \"" + loaderType + "\".");
+					}
+					
 					_binaryCompleteCallbacks = _objectPool.getObject(Vector.<Function>);
 					_binaryProgressCallbacks = _objectPool.getObject(Vector.<Function>);
 					_binaryIOErrorCallbacks = _objectPool.getObject(Vector.<Function>);
@@ -218,6 +235,7 @@ package com.codeTooth.actionscript.lang.utils.ctLoader
 					_completeCallbacks = _objectPool.getObject(Vector.<Function>);
 					_ioErrorCallbacks = _objectPool.getObject(Vector.<Function>);
 					
+					_loaderType = loaderType;
 					_context = context;
 					_url = url;
 					addCallbacks(binaryCompleteCallback, binaryProgressCallback, 
@@ -225,18 +243,18 @@ package com.codeTooth.actionscript.lang.utils.ctLoader
 						completeCallback, ioErrorCallback
 					);
 					
-					_state = STATE_LOADING_BINARY;
-					
-					if(_urlLoader == null)
+					if(_loaderType & TYPE_BINARY)
 					{
-						_urlLoader = new URLLoader();
-						_urlLoader.addEventListener(Event.COMPLETE, urlLoaderCompleteHandler);
-						_urlLoader.addEventListener(IOErrorEvent.IO_ERROR, urlLoaderIOErrorHandler);
-						_urlLoader.addEventListener(ProgressEvent.PROGRESS, urlLoaderProgressHandler);
-						_urlLoader.addEventListener(SecurityErrorEvent.SECURITY_ERROR, urlLoaderSecurityErrorHandler);
-						_urlLoader.dataFormat = URLLoaderDataFormat.BINARY;
+						_state = STATE_LOADING_BINARY;
+						createURLLoader();
+						_urlLoader.load(new URLRequest(url));
 					}
-					_urlLoader.load(new URLRequest(url));
+					else
+					{
+						_state = STATE_LOADING;
+						createLoader();
+						_loader.load(new URLRequest(url), _context);
+					}
 				}
 				else if(_state == STATE_DESTROY)
 				{
@@ -324,10 +342,37 @@ package com.codeTooth.actionscript.lang.utils.ctLoader
 			}
 		}
 		
+		private function createURLLoader():void
+		{
+			if(_urlLoader == null)
+			{
+				_urlLoader = new URLLoader();
+				_urlLoader.addEventListener(Event.COMPLETE, urlLoaderCompleteHandler);
+				_urlLoader.addEventListener(IOErrorEvent.IO_ERROR, urlLoaderIOErrorHandler);
+				_urlLoader.addEventListener(ProgressEvent.PROGRESS, urlLoaderProgressHandler);
+				_urlLoader.addEventListener(SecurityErrorEvent.SECURITY_ERROR, urlLoaderSecurityErrorHandler);
+				_urlLoader.dataFormat = URLLoaderDataFormat.BINARY;
+			}
+		}
+		
+		private function createLoader():void
+		{
+			if(_loader == null)
+			{
+				_loader = new Loader();
+				_loader.contentLoaderInfo.addEventListener(Event.COMPLETE, loaderCompleteHandler);
+				_loader.contentLoaderInfo.addEventListener(IOErrorEvent.IO_ERROR, loaderIOErrorHandler);
+			}
+		}
+		
 		private function releaseLoaders():void
 		{
 			close();
 			removeListeners();
+			if(_loader != null)
+			{
+				_loader.unloadAndStop(false);
+			}
 			_loader = null;
 			_urlLoader = null;
 		}
@@ -358,14 +403,18 @@ package com.codeTooth.actionscript.lang.utils.ctLoader
 		
 		private function urlLoaderCompleteHandler(event:Event):void
 		{
-			if(_loader == null)
+			executeCallbacks(_binaryCompleteCallbacks);
+			if(_loaderType & TYPE_NORMAL)
 			{
-				_loader = new Loader();
-				_loader.contentLoaderInfo.addEventListener(Event.COMPLETE, loaderCompleteHandler);
-				_loader.contentLoaderInfo.addEventListener(IOErrorEvent.IO_ERROR, loaderIOErrorHandler);
+				createLoader();
+				_state = STATE_LOADING;
+				_loader.loadBytes(_urlLoader.data, _context);
 			}
-			_state = STATE_LOADING;
-			_loader.loadBytes(_urlLoader.data, _context);
+			else
+			{
+				releaseAllCallbacks();
+				removeListeners();
+			}
 		}
 		
 		private function urlLoaderProgressHandler(event:ProgressEvent):void

@@ -21,12 +21,12 @@ package
 			stage.scaleMode = StageScaleMode.NO_SCALE;
 			
 			_loader = new CtLoader();
-//			_loader.load("_bigMap_1x1.jpg", null, completeCallback, null, null, null, null, null);
-//			_loader.load("_bigMap_1x1.jpg", null, completeCallback, null, null, null, null, null);
+			_loader.load("_bigMap_1x1.jpg", null, CtLoaderItem.TYPE_NORMAL | CtLoaderItem.TYPE_BINARY, completeCallback, null, binaryCompleteCallback, null, null, null);
+			_loader.load("_bigMap_1x1.jpg", null, CtLoaderItem.TYPE_NORMAL | CtLoaderItem.TYPE_BINARY, completeCallback, null, null, null, null, null);
 			
 			var errorPlaceholder:BitmapData = new BitmapData(150, 150, false, 0x0099FF);
 			var loadingPlaceholder:BitmapData = new BitmapData(150, 150, false, 0xFF0000);
-			var image:DisplayObject = _loader.loadImage("_bigMap_1x1.jpg", null, loadingPlaceholder, errorPlaceholder);
+			var image:DisplayObject = _loader.loadIcon("_bigMap_1x1.jpg", null, loadingPlaceholder, errorPlaceholder);
 			addChild(image);
 		}
 		
@@ -36,6 +36,11 @@ package
 			bmp.x = Math.random() * 800;
 			bmp.y = Math.random() * 500;
 			addChild(bmp);
+		}
+		
+		private function binaryCompleteCallback(loader:CtLoaderItem):void
+		{
+			trace(loader.getBytes().length);
 		}
 	}
 }

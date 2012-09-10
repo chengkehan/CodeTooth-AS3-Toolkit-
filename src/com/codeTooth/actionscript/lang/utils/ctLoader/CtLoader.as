@@ -17,13 +17,14 @@ package com.codeTooth.actionscript.lang.utils.ctLoader
 			_loaderItems = new Dictionary();
 		}
 		
-		public function load(url:String, context:LoaderContext = null,
+		public function load(url:String, context:LoaderContext = null, loaderType:int = 3, 
 							 completeCallback:Function = null, ioErrorCallback:Function = null, 
 							 binaryCompleteCallback:Function = null, binaryProgressCallback:Function = null, 
 							 binaryIOErrorCallback:Function = null, binarySecurityErrorCallback:Function = null):CtLoaderItem
 		{
 			var loaderItem:CtLoaderItem = getLoaderItem(url);
-			var result:Boolean = loaderItem.load(url, context, 
+			var result:Boolean = loaderItem.load(
+				url, context, loaderType, 
 				completeCallback, ioErrorCallback, 
 				binaryCompleteCallback, binaryProgressCallback, binaryIOErrorCallback, binarySecurityErrorCallback
 			);
@@ -31,9 +32,10 @@ package com.codeTooth.actionscript.lang.utils.ctLoader
 			return result ? loaderItem : null;
 		}
 		
-		public function loadImage(url:String, context:LoaderContext = null, loadingPlaceholder:BitmapData = null, errorPlaceholder:BitmapData = null):DisplayObject
+		public function loadIcon(url:String, context:LoaderContext = null, 
+								  loadingPlaceholder:BitmapData = null, errorPlaceholder:BitmapData = null):CtIcon
 		{
-			return new CtImage(this, url, context, loadingPlaceholder, errorPlaceholder);
+			return new CtIcon(this, url, context, loadingPlaceholder, errorPlaceholder);
 		}
 		
 		public function destroy():void
